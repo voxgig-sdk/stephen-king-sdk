@@ -1,0 +1,44 @@
+# BasicShortFlow
+
+main: kit: flow: BasicShortFlow:
+{
+  entity: "short",
+  kind: "basic",
+  name: "BasicShortFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "short_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "short_ref01",
+        srcdatavar: "short_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "short01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-short_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicShortFlow"
+}

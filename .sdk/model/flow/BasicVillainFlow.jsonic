@@ -1,0 +1,44 @@
+# BasicVillainFlow
+
+main: kit: flow: BasicVillainFlow:
+{
+  entity: "villain",
+  kind: "basic",
+  name: "BasicVillainFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "villain_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "villain_ref01",
+        srcdatavar: "villain_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "villain01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-villain_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVillainFlow"
+}

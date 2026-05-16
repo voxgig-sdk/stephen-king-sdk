@@ -1,0 +1,35 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 6
+  metrics: count: method: 6
+
+  entity: book: {
+    path: "/api/book/{id}": {
+      op: load: method: *GET
+    }
+    path: "/api/books": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: short: {
+    path: "/api/short/{id}": {
+      op: load: method: *GET
+    }
+    path: "/api/shorts": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: villain: {
+    path: "/api/villain/{id}": {
+      op: load: method: *GET
+    }
+    path: "/api/villains": {
+      op: list: method: *GET
+    }
+  }
+
+}

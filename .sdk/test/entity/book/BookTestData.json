@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "book": {
+      "BOOK00": {
+        "id": "BOOK00",
+        "isbn": "s3d",
+        "page": "s3e",
+        "publisher": "s3f",
+        "title": "s40",
+        "year": "s41"
+      },
+      "BOOK01": {
+        "id": "BOOK01",
+        "isbn": "s79",
+        "page": "s7a",
+        "publisher": "s7b",
+        "title": "s7c",
+        "year": "s7d"
+      },
+      "BOOK02": {
+        "id": "BOOK02",
+        "isbn": "sb5",
+        "page": "sb6",
+        "publisher": "sb7",
+        "title": "sb8",
+        "year": "sb9"
+      }
+    }
+  },
+  "new": {
+    "book": {
+      "book_ref01": {
+        "isbn": "sf1",
+        "page": "sf2",
+        "publisher": "sf3",
+        "title": "sf4",
+        "year": "sf5"
+      }
+    }
+  }
+}

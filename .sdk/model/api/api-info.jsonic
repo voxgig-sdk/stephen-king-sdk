@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Hunter Van Lear"
+      }
+      description: "Provides access to Stephen King books, short stories, and villains. Retrieve information by ID."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://stephen-king-api.onrender.com"
+        }
+      ]
+      title: "Stephen King API"
+      version: "1.0.0"
+      "x-documentation": "https://stephen-king-api.onrender.com/"
+    }
+  }
+}
+
+}

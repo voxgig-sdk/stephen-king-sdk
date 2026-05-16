@@ -1,0 +1,98 @@
+# Entity: short
+
+main: kit: entity: short: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "collection"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "short"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/shorts"
+          parts: [
+            "api"
+            "shorts"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 19
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/short/{id}"
+          parts: [
+            "api"
+            "short"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

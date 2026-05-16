@@ -1,0 +1,103 @@
+# Entity: book
+
+main: kit: entity: book: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "isbn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "page"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "publisher"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "book"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/books"
+          parts: [
+            "api"
+            "books"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 19
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/book/{id}"
+          parts: [
+            "api"
+            "book"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,417 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Stephen King API",
+    "description": "Provides access to Stephen King books, short stories, and villains. Retrieve information by ID.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Hunter Van Lear"
+    },
+    "x-documentation": "https://stephen-king-api.onrender.com/"
+  },
+  "servers": [
+    {
+      "url": "https://stephen-king-api.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/books": {
+      "get": {
+        "summary": "Get all books",
+        "description": "Retrieves a list of all Stephen King books",
+        "operationId": "getAllBooks",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of books",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/book/{id}": {
+      "get": {
+        "summary": "Get book by ID",
+        "description": "Retrieves a specific Stephen King book by its ID",
+        "operationId": "getBookById",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the book to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 19
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with book details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shorts": {
+      "get": {
+        "summary": "Get all short stories",
+        "description": "Retrieves a list of all Stephen King short stories",
+        "operationId": "getAllShorts",
+        "tags": [
+          "Short Stories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of short stories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShortStory"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/short/{id}": {
+      "get": {
+        "summary": "Get short story by ID",
+        "description": "Retrieves a specific Stephen King short story by its ID",
+        "operationId": "getShortById",
+        "tags": [
+          "Short Stories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the short story to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 19
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with short story details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShortStory"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Short story not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/villains": {
+      "get": {
+        "summary": "Get all villains",
+        "description": "Retrieves a list of all Stephen King villains",
+        "operationId": "getAllVillains",
+        "tags": [
+          "Villains"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of villains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Villain"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/villain/{id}": {
+      "get": {
+        "summary": "Get villain by ID",
+        "description": "Retrieves a specific Stephen King villain by its ID",
+        "operationId": "getVillainById",
+        "tags": [
+          "Villains"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the villain to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 19
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with villain details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Villain"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Villain not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the book",
+            "example": 19
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the book",
+            "example": "The Shining"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of publication",
+            "example": 1977
+          },
+          "isbn": {
+            "type": "string",
+            "description": "ISBN of the book",
+            "example": "978-0385121675"
+          },
+          "pages": {
+            "type": "integer",
+            "description": "Number of pages",
+            "example": 447
+          },
+          "publisher": {
+            "type": "string",
+            "description": "Publisher of the book",
+            "example": "Doubleday"
+          }
+        }
+      },
+      "ShortStory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the short story",
+            "example": 19
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the short story",
+            "example": "The Mist"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of publication",
+            "example": 1980
+          },
+          "collection": {
+            "type": "string",
+            "description": "Collection the short story appears in",
+            "example": "Skeleton Crew"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of short story",
+            "example": "novella"
+          }
+        }
+      },
+      "Villain": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the villain",
+            "example": 19
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the villain",
+            "example": "Pennywise"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender of the villain",
+            "example": "male"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the villain",
+            "example": "deceased"
+          },
+          "work": {
+            "type": "string",
+            "description": "Book or story the villain appears in",
+            "example": "It"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes about the villain"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error description"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Books",
+      "description": "Operations related to Stephen King books"
+    },
+    {
+      "name": "Short Stories",
+      "description": "Operations related to Stephen King short stories"
+    },
+    {
+      "name": "Villains",
+      "description": "Operations related to Stephen King villains"
+    }
+  ]
+}

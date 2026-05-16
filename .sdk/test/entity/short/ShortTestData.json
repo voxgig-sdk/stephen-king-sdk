@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "short": {
+      "SHORT00": {
+        "collection": "s32",
+        "id": "SHORT00",
+        "title": "s34",
+        "type": "s35",
+        "year": "s36"
+      },
+      "SHORT01": {
+        "collection": "s64",
+        "id": "SHORT01",
+        "title": "s66",
+        "type": "s67",
+        "year": "s68"
+      },
+      "SHORT02": {
+        "collection": "s96",
+        "id": "SHORT02",
+        "title": "s98",
+        "type": "s99",
+        "year": "s9a"
+      }
+    }
+  },
+  "new": {
+    "short": {
+      "short_ref01": {
+        "collection": "sc8",
+        "title": "sca",
+        "type": "scb",
+        "year": "scc"
+      }
+    }
+  }
+}

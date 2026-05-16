@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "villain": {
+      "VILLAIN00": {
+        "gender": "s3c",
+        "id": "VILLAIN00",
+        "name": "s3e",
+        "note": "s3f",
+        "status": "s40",
+        "work": "s41"
+      },
+      "VILLAIN01": {
+        "gender": "s78",
+        "id": "VILLAIN01",
+        "name": "s7a",
+        "note": "s7b",
+        "status": "s7c",
+        "work": "s7d"
+      },
+      "VILLAIN02": {
+        "gender": "sb4",
+        "id": "VILLAIN02",
+        "name": "sb6",
+        "note": "sb7",
+        "status": "sb8",
+        "work": "sb9"
+      }
+    }
+  },
+  "new": {
+    "villain": {
+      "villain_ref01": {
+        "gender": "sf0",
+        "name": "sf2",
+        "note": "sf3",
+        "status": "sf4",
+        "work": "sf5"
+      }
+    }
+  }
+}
