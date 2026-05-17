@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://stephen-king-api.onrender.com',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

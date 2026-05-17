@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/stephen-king-sdk"
-	"github.com/voxgig-sdk/stephen-king-sdk/core"
+	sdk "github.com/voxgig-sdk/stephen-king-sdk/go"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/core"
 )
 
 func TestVillainDirect(t *testing.T) {

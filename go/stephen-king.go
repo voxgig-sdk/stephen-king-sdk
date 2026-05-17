@@ -1,10 +1,10 @@
 package voxgigstephenkingsdk
 
 import (
-	"github.com/voxgig-sdk/stephen-king-sdk/core"
-	"github.com/voxgig-sdk/stephen-king-sdk/entity"
-	"github.com/voxgig-sdk/stephen-king-sdk/feature"
-	_ "github.com/voxgig-sdk/stephen-king-sdk/utility"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/core"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/entity"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/feature"
+	_ "github.com/voxgig-sdk/stephen-king-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

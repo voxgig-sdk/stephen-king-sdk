@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/stephen-king-sdk/core"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/stephen-king-sdk/go/utility/struct"
 )
 
 type VillainEntity struct {

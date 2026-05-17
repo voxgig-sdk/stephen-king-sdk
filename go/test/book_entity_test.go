@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/stephen-king-sdk"
-	"github.com/voxgig-sdk/stephen-king-sdk/core"
+	sdk "github.com/voxgig-sdk/stephen-king-sdk/go"
+	"github.com/voxgig-sdk/stephen-king-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/stephen-king-sdk/go/utility/struct"
 )
 
 func TestBookEntity(t *testing.T) {
