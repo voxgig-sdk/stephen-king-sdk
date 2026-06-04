@@ -106,14 +106,12 @@ def _villain_direct_setup(mockres):
     env = runner.env_override({
         "STEPHENKING_TEST_VILLAIN_ENTID": {},
         "STEPHENKING_TEST_LIVE": "FALSE",
-        "STEPHENKING_APIKEY": "NONE",
     })
 
     live = env.get("STEPHENKING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("STEPHENKING_APIKEY"),
         }
         client = StephenKingSDK(merged_opts)
         return {

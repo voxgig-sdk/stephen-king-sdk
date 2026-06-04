@@ -17,7 +17,19 @@
         ],
         "title": "Stephen King API",
         "version": "1.0.0",
-        "x-documentation": "https://stephen-king-api.onrender.com/"
+        "x-documentation": "https://stephen-king-api.onrender.com/",
+        "tagline": "Look up Stephen King's books, short stories, and villains by ID",
+        "homepage": "https://stephen-king-api.onrender.com",
+        "docs_url": "https://stephen-king-api.onrender.com/docs",
+        "license_short": "Free, open-source community project (no formal licence stated).",
+        "license_md": "- Described by the maintainer as \"free, open-source\"; no formal licence text is published alongside the API.\n- Created and maintained by Hunter Van Lear ([hvanlear](https://github.com/hvanlear) on GitHub) — see the [Stephen-King-API repository](https://github.com/hvanlear/Stephen-King-API).\n- Stephen King's works and characters remain the intellectual property of their respective rights holders; treat returned data as catalogue metadata for fan/educational use.\n- No specific attribution requirement is stated, but a courtesy credit to the project is appropriate.",
+        "about_md": "The [Stephen King API](https://stephen-king-api.onrender.com) is a small, community-run REST service that catalogues Stephen King's literary universe. It is built and hosted by [Hunter Van Lear](https://github.com/hvanlear) on Render, and is also indexed on [Free Public APIs](https://freepublicapis.com/stephen-king-api).\n\nWhat you get from the API:\n\n- Books — id, `Year`, `Title`, `handle`, `Publisher`, `ISBN`, `Pages`, `Notes`, related `villains`, `created_at`.\n- Short stories — id, `title`, `type`, `handle`, `originallyPublishedIn`, `collectedIn`, `notes`, `year`, related `villains`, `created_at`.\n- Villains — id, `name`, `gender`, `status`, `types_id`, `notes`, related `books` and `shorts`, `created_at`.\n- List endpoints support optional pagination via `page` and `limit` query parameters (used together; `limit` capped at 100).\n\nThe API is read-only (GET requests only), returns JSON, and requires no authentication. CORS is enabled, so browser clients can call it directly. As a free service hosted on Render's free tier, cold-start latency on first request is common; no formal rate limits are published.",
+        "entity_desc": {
+          "book": "A Stephen King book entry with bibliographic fields (title, year, publisher, ISBN, pages) and linked villains; available at `/api/books` and `/api/books/{id}`.",
+          "short": "A Stephen King short story with title, type, year, original publication, collection it appears in, and linked villains; available at `/api/shorts` and `/api/short/{id}`.",
+          "villain": "An antagonist or monster from King's works with name, gender, status, notes, and back-references to the books and shorts they appear in; available at `/api/villains` and `/api/villain/{id}`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +37,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "book": {

@@ -121,14 +121,12 @@ function short_direct_setup($mockres)
     $env = Runner::env_override([
         "STEPHENKING_TEST_SHORT_ENTID" => [],
         "STEPHENKING_TEST_LIVE" => "FALSE",
-        "STEPHENKING_APIKEY" => "NONE",
     ]);
 
     $live = $env["STEPHENKING_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["STEPHENKING_APIKEY"],
         ];
         $client = new StephenKingSDK($merged_opts);
         return [

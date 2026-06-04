@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'STEPHEN_KING_TEST_BOOK_ENTID': idmap,
     'STEPHEN_KING_TEST_LIVE': 'FALSE',
     'STEPHEN_KING_TEST_EXPLAIN': 'FALSE',
-    'STEPHEN_KING_APIKEY': 'NONE',
   })
 
   idmap = env['STEPHEN_KING_TEST_BOOK_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new StephenKingSDK(merge([
       {
-        apikey: env.STEPHEN_KING_APIKEY,
       },
       extra
     ]))

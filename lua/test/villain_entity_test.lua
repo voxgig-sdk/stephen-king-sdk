@@ -102,7 +102,6 @@ function villain_basic_setup(extra)
     ["STEPHENKING_TEST_VILLAIN_ENTID"] = idmap,
     ["STEPHENKING_TEST_LIVE"] = "FALSE",
     ["STEPHENKING_TEST_EXPLAIN"] = "FALSE",
-    ["STEPHENKING_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function villain_basic_setup(extra)
   if env["STEPHENKING_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["STEPHENKING_APIKEY"],
       },
       extra or {},
     })

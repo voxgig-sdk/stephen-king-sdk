@@ -135,7 +135,6 @@ func villainBasicSetup(extra map[string]any) *entityTestSetup {
 		"STEPHENKING_TEST_VILLAIN_ENTID": idmap,
 		"STEPHENKING_TEST_LIVE":      "FALSE",
 		"STEPHENKING_TEST_EXPLAIN":   "FALSE",
-		"STEPHENKING_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["STEPHENKING_TEST_VILLAIN_ENTID"])
@@ -146,7 +145,6 @@ func villainBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["STEPHENKING_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["STEPHENKING_APIKEY"],
 			},
 			extra,
 		})
