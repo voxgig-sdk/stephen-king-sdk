@@ -10,7 +10,7 @@ The TypeScript SDK for the StephenKing API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install stephen-king
+npm install @voxgig-sdk/stephen-king
 ```
 ## Tutorial: your first API call
 

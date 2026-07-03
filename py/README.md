@@ -10,7 +10,7 @@ The Python SDK for the StephenKing API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install stephen-king-sdk
+pip install voxgig-sdk-stephen-king
 ```
 
 Or install from source:

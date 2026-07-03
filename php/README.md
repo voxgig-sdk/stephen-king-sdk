@@ -10,7 +10,7 @@ The PHP SDK for the StephenKing API — an entity-oriented client using PHP conv
 
 ## Install
 ```bash
-composer require voxgig/stephen-king-sdk
+composer require voxgig-sdk/stephen-king
 ```
 
 

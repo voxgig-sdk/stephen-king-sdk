@@ -8,12 +8,14 @@ source = {
   dir = "stephen-king-sdk/lua"
 }
 description = {
-  summary = "StephenKing SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Stephen King public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/stephen-king-sdk",
+  issues_url = "https://github.com/voxgig-sdk/stephen-king-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "stephen-king" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

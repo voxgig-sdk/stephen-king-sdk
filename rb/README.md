@@ -10,13 +10,13 @@ The Ruby SDK for the StephenKing API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install stephen-king-sdk
+gem install voxgig-sdk-stephen-king
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "stephen-king-sdk"
+gem "voxgig-sdk-stephen-king"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Lua SDK for the StephenKing API — an entity-oriented client using Lua conv
 
 ## Install
 ```bash
-luarocks install stephen-king-sdk
+luarocks install voxgig-sdk-stephen-king
 ```
 
 If the module is not yet published, add the source directory to
