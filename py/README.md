@@ -1,6 +1,11 @@
 # StephenKing Python SDK
 
-The Python SDK for the StephenKing API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the StephenKing API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from stephenking_sdk import StephenKingSDK
 
-client = StephenKingSDK({})
+client = StephenKingSDK({
+    "apikey": os.environ.get("STEPHEN-KING_APIKEY"),
+})
 ```
 
 ### 2. List books
 
 ```python
-result, err = client.Book(None).list(None, None)
+result, err = client.Book().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a book
 
 ```python
-result, err = client.Book(None).load({"id": "example_id"}, None)
+result, err = client.Book().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = StephenKingSDK.test(None, None)
+client = StephenKingSDK.test()
 
-result, err = client.StephenKing(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.StephenKing().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 STEPHEN-KING_TEST_LIVE=TRUE
+STEPHEN-KING_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

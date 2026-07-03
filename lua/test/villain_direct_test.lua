@@ -115,12 +115,14 @@ function villain_direct_setup(mockres)
   local env = runner.env_override({
     ["STEPHENKING_TEST_VILLAIN_ENTID"] = {},
     ["STEPHENKING_TEST_LIVE"] = "FALSE",
+    ["STEPHENKING_APIKEY"] = "NONE",
   })
 
   local live = env["STEPHENKING_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["STEPHENKING_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

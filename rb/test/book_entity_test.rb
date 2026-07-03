@@ -93,6 +93,7 @@ def book_basic_setup(extra)
     "STEPHENKING_TEST_BOOK_ENTID" => idmap,
     "STEPHENKING_TEST_LIVE" => "FALSE",
     "STEPHENKING_TEST_EXPLAIN" => "FALSE",
+    "STEPHENKING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,6 +105,7 @@ def book_basic_setup(extra)
   if env["STEPHENKING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["STEPHENKING_APIKEY"],
       },
       extra || {},
     ])

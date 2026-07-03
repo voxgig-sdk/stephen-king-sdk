@@ -175,12 +175,14 @@ func villainDirectSetup(mockres any) *villainDirectSetupResult {
 	env := envOverride(map[string]any{
 		"STEPHENKING_TEST_VILLAIN_ENTID": map[string]any{},
 		"STEPHENKING_TEST_LIVE":    "FALSE",
+		"STEPHENKING_APIKEY":       "NONE",
 	})
 
 	live := env["STEPHENKING_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["STEPHENKING_APIKEY"],
 		}
 		client := sdk.NewStephenKingSDK(mergedOpts)
 

@@ -114,12 +114,14 @@ def book_direct_setup(mockres)
   env = Runner.env_override({
     "STEPHENKING_TEST_BOOK_ENTID" => {},
     "STEPHENKING_TEST_LIVE" => "FALSE",
+    "STEPHENKING_APIKEY" => "NONE",
   })
 
   live = env["STEPHENKING_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["STEPHENKING_APIKEY"],
     }
     client = StephenKingSDK.new(merged_opts)
     return {

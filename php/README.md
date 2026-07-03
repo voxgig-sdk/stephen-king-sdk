@@ -1,6 +1,11 @@
 # StephenKing PHP SDK
 
-The PHP SDK for the StephenKing API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the StephenKing API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'stephenking_sdk.php';
 
-$client = new StephenKingSDK([]);
+$client = new StephenKingSDK([
+    "apikey" => getenv("STEPHEN-KING_APIKEY"),
+]);
 ```
 
 ### 2. List books
 
 ```php
-[$result, $err] = $client->Book(null)->list(null, null);
+[$result, $err] = $client->Book()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a book
 
 ```php
-[$result, $err] = $client->Book(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Book()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = StephenKingSDK::test(null, null);
+$client = StephenKingSDK::test();
 
-[$result, $err] = $client->StephenKing(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->StephenKing()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 STEPHEN-KING_TEST_LIVE=TRUE
+STEPHEN-KING_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

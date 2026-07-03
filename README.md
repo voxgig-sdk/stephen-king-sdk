@@ -1,21 +1,8 @@
 # StephenKing SDK
 
-Look up Stephen King's books, short stories, and villains by ID
+Stephen King API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Stephen King API
-
-The [Stephen King API](https://stephen-king-api.onrender.com) is a small, community-run REST service that catalogues Stephen King's literary universe. It is built and hosted by [Hunter Van Lear](https://github.com/hvanlear) on Render, and is also indexed on [Free Public APIs](https://freepublicapis.com/stephen-king-api).
-
-What you get from the API:
-
-- Books — id, `Year`, `Title`, `handle`, `Publisher`, `ISBN`, `Pages`, `Notes`, related `villains`, `created_at`.
-- Short stories — id, `title`, `type`, `handle`, `originallyPublishedIn`, `collectedIn`, `notes`, `year`, related `villains`, `created_at`.
-- Villains — id, `name`, `gender`, `status`, `types_id`, `notes`, related `books` and `shorts`, `created_at`.
-- List endpoints support optional pagination via `page` and `limit` query parameters (used together; `limit` capped at 100).
-
-The API is read-only (GET requests only), returns JSON, and requires no authentication. CORS is enabled, so browser clients can call it directly. As a free service hosted on Render's free tier, cold-start latency on first request is common; no formal rate limits are published.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install stephen-king-sdk
 luarocks install stephen-king-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { StephenKingSDK } from 'stephen-king'
 
-const client = new StephenKingSDK({})
+const client = new StephenKingSDK({
+  apikey: process.env.STEPHEN-KING_APIKEY,
+})
 
 // List all books
 const books = await client.Book().list()
+console.log(books.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Book** | A Stephen King book entry with bibliographic fields (title, year, publisher, ISBN, pages) and linked villains; available at `/api/books` and `/api/books/{id}`. | `/api/books` |
-| **Short** | A Stephen King short story with title, type, year, original publication, collection it appears in, and linked villains; available at `/api/shorts` and `/api/short/{id}`. | `/api/shorts` |
-| **Villain** | An antagonist or monster from King's works with name, gender, status, notes, and back-references to the books and shorts they appear in; available at `/api/villains` and `/api/villain/{id}`. | `/api/villains` |
+| **Book** |  | `/api/books` |
+| **Short** |  | `/api/shorts` |
+| **Villain** |  | `/api/villains` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,17 +102,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from stephenking_sdk import StephenKingSDK
 
-client = StephenKingSDK({})
+client = StephenKingSDK({
+    "apikey": os.environ.get("STEPHEN-KING_APIKEY"),
+})
 
 # List all books
-books, err = client.Book(None).list(None, None)
+books, err = client.Book().list()
+print(books)
 
 # Load a specific book
-book, err = client.Book(None).load(
-    {"id": "example_id"}, None
-)
+book, err = client.Book().load({"id": "example_id"})
+print(book)
 ```
 
 ### PHP
@@ -132,15 +124,17 @@ book, err = client.Book(None).load(
 <?php
 require_once 'stephenking_sdk.php';
 
-$client = new StephenKingSDK([]);
+$client = new StephenKingSDK([
+    "apikey" => getenv("STEPHEN-KING_APIKEY"),
+]);
 
 // List all books
-[$books, $err] = $client->Book(null)->list(null, null);
+[$books, $err] = $client->Book()->list();
+print_r($books);
 
 // Load a specific book
-[$book, $err] = $client->Book(null)->load(
-    ["id" => "example_id"], null
-);
+[$book, $err] = $client->Book()->load(["id" => "example_id"]);
+print_r($book);
 ```
 
 ### Golang
@@ -148,10 +142,13 @@ $client = new StephenKingSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/stephen-king-sdk/go"
 
-client := sdk.NewStephenKingSDK(map[string]any{})
+client := sdk.NewStephenKingSDK(map[string]any{
+    "apikey": os.Getenv("STEPHEN-KING_APIKEY"),
+})
 
 // List all books
 books, err := client.Book(nil).List(nil, nil)
+fmt.Println(books)
 ```
 
 ### Ruby
@@ -159,15 +156,17 @@ books, err := client.Book(nil).List(nil, nil)
 ```ruby
 require_relative "StephenKing_sdk"
 
-client = StephenKingSDK.new({})
+client = StephenKingSDK.new({
+  "apikey" => ENV["STEPHEN-KING_APIKEY"],
+})
 
 # List all books
-books, err = client.Book(nil).list(nil, nil)
+books, err = client.Book().list
+puts books
 
 # Load a specific book
-book, err = client.Book(nil).load(
-  { "id" => "example_id" }, nil
-)
+book, err = client.Book().load({ "id" => "example_id" })
+puts book
 ```
 
 ### Lua
@@ -175,15 +174,17 @@ book, err = client.Book(nil).load(
 ```lua
 local sdk = require("stephen-king_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("STEPHEN-KING_APIKEY"),
+})
 
 -- List all books
-local books, err = client:Book(nil):list(nil, nil)
+local books, err = client:Book():list()
+print(books)
 
 -- Load a specific book
-local book, err = client:Book(nil):load(
-  { id = "example_id" }, nil
-)
+local book, err = client:Book():load({ id = "example_id" })
+print(book)
 ```
 
 ## Unit testing in offline mode
@@ -202,25 +203,21 @@ const result = await client.Book().load({ id: 'test01' })
 ### Python
 
 ```python
-client = StephenKingSDK.test(None, None)
-result, err = client.Book(None).load(
-    {"id": "test01"}, None
-)
+client = StephenKingSDK.test()
+result, err = client.Book().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = StephenKingSDK::test(null, null);
-[$result, $err] = $client->Book(null)->load(
-    ["id" => "test01"], null
-);
+$client = StephenKingSDK::test();
+[$result, $err] = $client->Book()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Book(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -229,19 +226,15 @@ result, err := client.Book(nil).Load(
 ### Ruby
 
 ```ruby
-client = StephenKingSDK.test(nil, nil)
-result, err = client.Book(nil).load(
-  { "id" => "test01" }, nil
-)
+client = StephenKingSDK.test
+result, err = client.Book().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Book(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Book():load({ id = "test01" })
 ```
 
 ## How it works
@@ -345,16 +338,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Stephen King API
-
-- Upstream: [https://stephen-king-api.onrender.com](https://stephen-king-api.onrender.com)
-- API docs: [https://stephen-king-api.onrender.com/docs](https://stephen-king-api.onrender.com/docs)
-
-- Described by the maintainer as "free, open-source"; no formal licence text is published alongside the API.
-- Created and maintained by Hunter Van Lear ([hvanlear](https://github.com/hvanlear) on GitHub) — see the [Stephen-King-API repository](https://github.com/hvanlear/Stephen-King-API).
-- Stephen King's works and characters remain the intellectual property of their respective rights holders; treat returned data as catalogue metadata for fan/educational use.
-- No specific attribution requirement is stated, but a courtesy credit to the project is appropriate.
 
 ---
 
