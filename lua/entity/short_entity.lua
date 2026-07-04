@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ShortLoadMatch
+---@param ctrl? table
+---@return Short
+---@return string? err
 function ShortEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ShortListMatch
+---@param ctrl? table
+---@return Short[]
+---@return string? err
 function ShortEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

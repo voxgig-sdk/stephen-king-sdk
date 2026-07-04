@@ -4,6 +4,8 @@ import { BookEntity } from './entity/BookEntity'
 import { ShortEntity } from './entity/ShortEntity'
 import { VillainEntity } from './entity/VillainEntity'
 
+export type * from './StephenKingTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class StephenKingSDK {
 
 
 
+  _book?: BookEntity
+
+  // Idiomatic facade: `client.book.list()` / `client.book.load({ id })`.
+  get book(): BookEntity {
+    return (this._book ??= new BookEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.book` instead. */
   Book(data?: any) {
     const self = this
     return new BookEntity(self,data)
   }
 
 
+  _short?: ShortEntity
+
+  // Idiomatic facade: `client.short.list()` / `client.short.load({ id })`.
+  get short(): ShortEntity {
+    return (this._short ??= new ShortEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.short` instead. */
   Short(data?: any) {
     const self = this
     return new ShortEntity(self,data)
   }
 
 
+  _villain?: VillainEntity
+
+  // Idiomatic facade: `client.villain.list()` / `client.villain.load({ id })`.
+  get villain(): VillainEntity {
+    return (this._villain ??= new VillainEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.villain` instead. */
   Villain(data?: any) {
     const self = this
     return new VillainEntity(self,data)

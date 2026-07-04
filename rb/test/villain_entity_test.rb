@@ -43,16 +43,14 @@ class VillainEntityTest < Minitest::Test
     villain_ref01_ent = client.Villain(nil)
     villain_ref01_match = {}
 
-    villain_ref01_list_result, err = villain_ref01_ent.list(villain_ref01_match, nil)
-    assert_nil err
+    villain_ref01_list_result = villain_ref01_ent.list(villain_ref01_match, nil)
     assert villain_ref01_list_result.is_a?(Array)
 
     # LOAD
     villain_ref01_match_dt0 = {
       "id" => villain_ref01_data["id"],
     }
-    villain_ref01_data_dt0_loaded, err = villain_ref01_ent.load(villain_ref01_match_dt0, nil)
-    assert_nil err
+    villain_ref01_data_dt0_loaded = villain_ref01_ent.load(villain_ref01_match_dt0, nil)
     villain_ref01_data_dt0_load_result = Helpers.to_map(villain_ref01_data_dt0_loaded)
     assert !villain_ref01_data_dt0_load_result.nil?
     assert_equal villain_ref01_data_dt0_load_result["id"], villain_ref01_data["id"]
@@ -93,7 +91,6 @@ def villain_basic_setup(extra)
     "STEPHENKING_TEST_VILLAIN_ENTID" => idmap,
     "STEPHENKING_TEST_LIVE" => "FALSE",
     "STEPHENKING_TEST_EXPLAIN" => "FALSE",
-    "STEPHENKING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def villain_basic_setup(extra)
   if env["STEPHENKING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STEPHENKING_APIKEY"],
       },
       extra || {},
     ])

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch VillainLoadMatch
+---@param ctrl? table
+---@return Villain
+---@return string? err
 function VillainEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch VillainListMatch
+---@param ctrl? table
+---@return Villain[]
+---@return string? err
 function VillainEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

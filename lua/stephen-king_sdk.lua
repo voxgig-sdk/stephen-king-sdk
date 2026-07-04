@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:book():list() / client:book():load({ id = ... })
+function StephenKingSDK:book(data)
+  local EntityMod = require("entity.book_entity")
+  if data == nil then
+    if self._book == nil then
+      self._book = EntityMod.new(self, nil)
+    end
+    return self._book
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:book() instead.
 function StephenKingSDK:Book(data)
   local EntityMod = require("entity.book_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:short():list() / client:short():load({ id = ... })
+function StephenKingSDK:short(data)
+  local EntityMod = require("entity.short_entity")
+  if data == nil then
+    if self._short == nil then
+      self._short = EntityMod.new(self, nil)
+    end
+    return self._short
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:short() instead.
 function StephenKingSDK:Short(data)
   local EntityMod = require("entity.short_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:villain():list() / client:villain():load({ id = ... })
+function StephenKingSDK:villain(data)
+  local EntityMod = require("entity.villain_entity")
+  if data == nil then
+    if self._villain == nil then
+      self._villain = EntityMod.new(self, nil)
+    end
+    return self._villain
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:villain() instead.
 function StephenKingSDK:Villain(data)
   local EntityMod = require("entity.villain_entity")
   return EntityMod.new(self, data)

@@ -245,16 +245,25 @@ func (sdk *StephenKingSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// Book returns a Book entity bound to this client.
+// Idiomatic usage: client.Book(nil).List(nil, nil) or
+// client.Book(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StephenKingSDK) Book(data map[string]any) StephenKingEntity {
 	return NewBookEntityFunc(sdk, data)
 }
 
 
+// Short returns a Short entity bound to this client.
+// Idiomatic usage: client.Short(nil).List(nil, nil) or
+// client.Short(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StephenKingSDK) Short(data map[string]any) StephenKingEntity {
 	return NewShortEntityFunc(sdk, data)
 }
 
 
+// Villain returns a Villain entity bound to this client.
+// Idiomatic usage: client.Villain(nil).List(nil, nil) or
+// client.Villain(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StephenKingSDK) Villain(data map[string]any) StephenKingEntity {
 	return NewVillainEntityFunc(sdk, data)
 }

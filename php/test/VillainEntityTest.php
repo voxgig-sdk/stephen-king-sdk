@@ -50,16 +50,14 @@ class VillainEntityTest extends TestCase
         $villain_ref01_ent = $client->Villain(null);
         $villain_ref01_match = [];
 
-        [$villain_ref01_list_result, $err] = $villain_ref01_ent->list($villain_ref01_match, null);
-        $this->assertNull($err);
+        $villain_ref01_list_result = $villain_ref01_ent->list($villain_ref01_match, null);
         $this->assertIsArray($villain_ref01_list_result);
 
         // LOAD
         $villain_ref01_match_dt0 = [
             "id" => $villain_ref01_data["id"],
         ];
-        [$villain_ref01_data_dt0_loaded, $err] = $villain_ref01_ent->load($villain_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $villain_ref01_data_dt0_loaded = $villain_ref01_ent->load($villain_ref01_match_dt0, null);
         $villain_ref01_data_dt0_load_result = Helpers::to_map($villain_ref01_data_dt0_loaded);
         $this->assertNotNull($villain_ref01_data_dt0_load_result);
         $this->assertEquals($villain_ref01_data_dt0_load_result["id"], $villain_ref01_data["id"]);
@@ -96,7 +94,6 @@ function villain_basic_setup($extra)
         "STEPHENKING_TEST_VILLAIN_ENTID" => $idmap,
         "STEPHENKING_TEST_LIVE" => "FALSE",
         "STEPHENKING_TEST_EXPLAIN" => "FALSE",
-        "STEPHENKING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function villain_basic_setup($extra)
     if ($env["STEPHENKING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STEPHENKING_APIKEY"],
             ],
             $extra ?? [],
         ]);

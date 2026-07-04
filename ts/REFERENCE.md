@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `StephenKingSDK.test()`.
 ## BookEntity
 
 ```ts
-const book = client.Book()
+const book = client.book
 ```
 
 ### Fields
@@ -155,7 +154,7 @@ const book = client.Book()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Book().list()
+const results = await client.book.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -163,7 +162,7 @@ const results = await client.Book().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Book().load({ id: 'book_id' })
+const result = await client.book.load({ id: 'book_id' })
 ```
 
 ### Common Methods
@@ -197,7 +196,7 @@ Return a copy of the entity options.
 ## ShortEntity
 
 ```ts
-const short = client.Short()
+const short = client.short
 ```
 
 ### Fields
@@ -217,7 +216,7 @@ const short = client.Short()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Short().list()
+const results = await client.short.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -225,7 +224,7 @@ const results = await client.Short().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Short().load({ id: 'short_id' })
+const result = await client.short.load({ id: 'short_id' })
 ```
 
 ### Common Methods
@@ -259,7 +258,7 @@ Return a copy of the entity options.
 ## VillainEntity
 
 ```ts
-const villain = client.Villain()
+const villain = client.villain
 ```
 
 ### Fields
@@ -280,7 +279,7 @@ const villain = client.Villain()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Villain().list()
+const results = await client.villain.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -288,7 +287,7 @@ const results = await client.Villain().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Villain().load({ id: 'villain_id' })
+const result = await client.villain.load({ id: 'villain_id' })
 ```
 
 ### Common Methods

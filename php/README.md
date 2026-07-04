@@ -9,9 +9,10 @@ The PHP SDK for the StephenKing API — an entity-oriented client using PHP conv
 
 
 ## Install
-```bash
-composer require voxgig-sdk/stephen-king
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/stephen-king-sdk/releases](https://github.com/voxgig-sdk/stephen-king-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'stephenking_sdk.php';
 
-$client = new StephenKingSDK([
-    "apikey" => getenv("STEPHEN-KING_APIKEY"),
-]);
+$client = new StephenKingSDK();
 ```
 
 ### 2. List books
 
 ```php
-[$result, $err] = $client->Book()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->book()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a book
 
 ```php
-[$result, $err] = $client->Book()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->book()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = StephenKingSDK::test();
 
-[$result, $err] = $client->StephenKing()->load(["id" => "test01"]);
+$result = $client->book()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new StephenKingSDK([
 Create a `.env.local` file at the project root:
 
 ```
-STEPHEN-KING_TEST_LIVE=TRUE
-STEPHEN-KING_APIKEY=<your-key>
+STEPHEN_KING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -201,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -266,7 +275,7 @@ API path: `/api/villains`
 
 ### Book
 
-Create an instance: `const book = client.Book()`
+Create an instance: `const book = client.book`
 
 #### Operations
 
@@ -289,19 +298,19 @@ Create an instance: `const book = client.Book()`
 #### Example: Load
 
 ```ts
-const book = await client.Book().load({ id: 'book_id' })
+const book = await client.book.load({ id: 'book_id' })
 ```
 
 #### Example: List
 
 ```ts
-const books = await client.Book().list()
+const books = await client.book.list()
 ```
 
 
 ### Short
 
-Create an instance: `const short = client.Short()`
+Create an instance: `const short = client.short`
 
 #### Operations
 
@@ -323,19 +332,19 @@ Create an instance: `const short = client.Short()`
 #### Example: Load
 
 ```ts
-const short = await client.Short().load({ id: 'short_id' })
+const short = await client.short.load({ id: 'short_id' })
 ```
 
 #### Example: List
 
 ```ts
-const shorts = await client.Short().list()
+const shorts = await client.short.list()
 ```
 
 
 ### Villain
 
-Create an instance: `const villain = client.Villain()`
+Create an instance: `const villain = client.villain`
 
 #### Operations
 
@@ -358,13 +367,13 @@ Create an instance: `const villain = client.Villain()`
 #### Example: Load
 
 ```ts
-const villain = await client.Villain().load({ id: 'villain_id' })
+const villain = await client.villain.load({ id: 'villain_id' })
 ```
 
 #### Example: List
 
 ```ts
-const villains = await client.Villain().list()
+const villains = await client.villain.list()
 ```
 
 
@@ -439,11 +448,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$book = $client->book();
+$book->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $book->dataGet() now returns the loaded book data
+// $book->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

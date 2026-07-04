@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Villain,
+  VillainLoadMatch,
+  VillainListMatch,
+} from '../StephenKingTypes'
 
 // TODO: needs Entity superclass
-class VillainEntity extends StephenKingEntityBase {
+class VillainEntity extends StephenKingEntityBase<Villain> {
 
   constructor(client: StephenKingSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class VillainEntity extends StephenKingEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: VillainLoadMatch, ctrl?: Control): Promise<Villain> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class VillainEntity extends StephenKingEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Villain> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: VillainListMatch, ctrl?: Control): Promise<Villain[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class VillainEntity extends StephenKingEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Villain[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

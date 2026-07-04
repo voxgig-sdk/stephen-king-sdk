@@ -45,6 +45,7 @@ class ShortEntity
     end
   end
 
+  # @return [Short, Hash] the current Short data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ShortEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Short fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Short.
+  #
+  # @param reqmatch [ShortLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Short, Hash] the loaded Short; raises StephenKingError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ShortEntity
 
 
   
+  # List Short items matching the given filter.
+  #
+  # @param reqmatch [ShortListMatch, Hash, nil] match filter (any subset of Short fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Short>, Array] the matching Short items; raises StephenKingError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

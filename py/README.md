@@ -9,11 +9,9 @@ The Python SDK for the StephenKing API — an entity-oriented client following P
 
 
 ## Install
-```bash
-pip install voxgig-sdk-stephen-king
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/stephen-king-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from stephenking_sdk import StephenKingSDK
 
-client = StephenKingSDK({
-    "apikey": os.environ.get("STEPHEN-KING_APIKEY"),
-})
+client = StephenKingSDK()
 ```
 
 ### 2. List books
 
 ```python
-result, err = client.Book().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.book.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a book
 
 ```python
-result, err = client.Book().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.book.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StephenKingSDK.test()
 
-result, err = client.StephenKing().load({"id": "test01"})
+result = client.book.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = StephenKingSDK({
 Create a `.env.local` file at the project root:
 
 ```
-STEPHEN-KING_TEST_LIVE=TRUE
-STEPHEN-KING_APIKEY=<your-key>
+STEPHEN_KING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Book` | `(data) -> BookEntity` | Create a Book entity instance. |
 | `Short` | `(data) -> ShortEntity` | Create a Short entity instance. |
 | `Villain` | `(data) -> VillainEntity` | Create a Villain entity instance. |
@@ -191,11 +183,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -205,8 +197,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -270,7 +266,7 @@ API path: `/api/villains`
 
 ### Book
 
-Create an instance: `const book = client.Book()`
+Create an instance: `const book = client.book`
 
 #### Operations
 
@@ -293,19 +289,19 @@ Create an instance: `const book = client.Book()`
 #### Example: Load
 
 ```ts
-const book = await client.Book().load({ id: 'book_id' })
+const book = await client.book.load({ id: 'book_id' })
 ```
 
 #### Example: List
 
 ```ts
-const books = await client.Book().list()
+const books = await client.book.list()
 ```
 
 
 ### Short
 
-Create an instance: `const short = client.Short()`
+Create an instance: `const short = client.short`
 
 #### Operations
 
@@ -327,19 +323,19 @@ Create an instance: `const short = client.Short()`
 #### Example: Load
 
 ```ts
-const short = await client.Short().load({ id: 'short_id' })
+const short = await client.short.load({ id: 'short_id' })
 ```
 
 #### Example: List
 
 ```ts
-const shorts = await client.Short().list()
+const shorts = await client.short.list()
 ```
 
 
 ### Villain
 
-Create an instance: `const villain = client.Villain()`
+Create an instance: `const villain = client.villain`
 
 #### Operations
 
@@ -362,13 +358,13 @@ Create an instance: `const villain = client.Villain()`
 #### Example: Load
 
 ```ts
-const villain = await client.Villain().load({ id: 'villain_id' })
+const villain = await client.villain.load({ id: 'villain_id' })
 ```
 
 #### Example: List
 
 ```ts
-const villains = await client.Villain().list()
+const villains = await client.villain.list()
 ```
 
 
@@ -442,11 +438,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+book = client.book
+book.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# book.data_get() now returns the loaded book data
+# book.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -50,16 +50,14 @@ class ShortEntityTest extends TestCase
         $short_ref01_ent = $client->Short(null);
         $short_ref01_match = [];
 
-        [$short_ref01_list_result, $err] = $short_ref01_ent->list($short_ref01_match, null);
-        $this->assertNull($err);
+        $short_ref01_list_result = $short_ref01_ent->list($short_ref01_match, null);
         $this->assertIsArray($short_ref01_list_result);
 
         // LOAD
         $short_ref01_match_dt0 = [
             "id" => $short_ref01_data["id"],
         ];
-        [$short_ref01_data_dt0_loaded, $err] = $short_ref01_ent->load($short_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $short_ref01_data_dt0_loaded = $short_ref01_ent->load($short_ref01_match_dt0, null);
         $short_ref01_data_dt0_load_result = Helpers::to_map($short_ref01_data_dt0_loaded);
         $this->assertNotNull($short_ref01_data_dt0_load_result);
         $this->assertEquals($short_ref01_data_dt0_load_result["id"], $short_ref01_data["id"]);
@@ -96,7 +94,6 @@ function short_basic_setup($extra)
         "STEPHENKING_TEST_SHORT_ENTID" => $idmap,
         "STEPHENKING_TEST_LIVE" => "FALSE",
         "STEPHENKING_TEST_EXPLAIN" => "FALSE",
-        "STEPHENKING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function short_basic_setup($extra)
     if ($env["STEPHENKING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STEPHENKING_APIKEY"],
             ],
             $extra ?? [],
         ]);

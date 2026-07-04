@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## BookEntity
 
 ```lua
-local book = client:Book(nil)
+local book = client:book(nil)
 ```
 
 ### Fields
@@ -113,7 +112,7 @@ local book = client:Book(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Book():list()
+local results, err = client:book():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -121,7 +120,7 @@ local results, err = client:Book():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Book():load({ id = "book_id" })
+local result, err = client:book():load({ id = "book_id" })
 ```
 
 ### Common Methods
@@ -157,7 +156,7 @@ Return the entity name.
 ## ShortEntity
 
 ```lua
-local short = client:Short(nil)
+local short = client:short(nil)
 ```
 
 ### Fields
@@ -177,7 +176,7 @@ local short = client:Short(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Short():list()
+local results, err = client:short():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -185,7 +184,7 @@ local results, err = client:Short():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Short():load({ id = "short_id" })
+local result, err = client:short():load({ id = "short_id" })
 ```
 
 ### Common Methods
@@ -221,7 +220,7 @@ Return the entity name.
 ## VillainEntity
 
 ```lua
-local villain = client:Villain(nil)
+local villain = client:villain(nil)
 ```
 
 ### Fields
@@ -242,7 +241,7 @@ local villain = client:Villain(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Villain():list()
+local results, err = client:villain():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -250,7 +249,7 @@ local results, err = client:Villain():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Villain():load({ id = "villain_id" })
+local result, err = client:villain():load({ id = "villain_id" })
 ```
 
 ### Common Methods

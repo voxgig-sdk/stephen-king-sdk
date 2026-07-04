@@ -144,16 +144,23 @@ class StephenKingSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class StephenKingSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class StephenKingSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def book(self):
+        """Idiomatic facade: client.book.list() / client.book.load({"id": ...})."""
+        from entity.book_entity import BookEntity
+        cached = getattr(self, "_book", None)
+        if cached is None:
+            cached = BookEntity(self, None)
+            self._book = cached
+        return cached
 
     def Book(self, data=None):
+        # Deprecated: use client.book instead.
         from entity.book_entity import BookEntity
         return BookEntity(self, data)
 
 
+    @property
+    def short(self):
+        """Idiomatic facade: client.short.list() / client.short.load({"id": ...})."""
+        from entity.short_entity import ShortEntity
+        cached = getattr(self, "_short", None)
+        if cached is None:
+            cached = ShortEntity(self, None)
+            self._short = cached
+        return cached
+
     def Short(self, data=None):
+        # Deprecated: use client.short instead.
         from entity.short_entity import ShortEntity
         return ShortEntity(self, data)
 
 
+    @property
+    def villain(self):
+        """Idiomatic facade: client.villain.list() / client.villain.load({"id": ...})."""
+        from entity.villain_entity import VillainEntity
+        cached = getattr(self, "_villain", None)
+        if cached is None:
+            cached = VillainEntity(self, None)
+            self._villain = cached
+        return cached
+
     def Villain(self, data=None):
+        # Deprecated: use client.villain instead.
         from entity.villain_entity import VillainEntity
         return VillainEntity(self, data)
 

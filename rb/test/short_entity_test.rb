@@ -43,16 +43,14 @@ class ShortEntityTest < Minitest::Test
     short_ref01_ent = client.Short(nil)
     short_ref01_match = {}
 
-    short_ref01_list_result, err = short_ref01_ent.list(short_ref01_match, nil)
-    assert_nil err
+    short_ref01_list_result = short_ref01_ent.list(short_ref01_match, nil)
     assert short_ref01_list_result.is_a?(Array)
 
     # LOAD
     short_ref01_match_dt0 = {
       "id" => short_ref01_data["id"],
     }
-    short_ref01_data_dt0_loaded, err = short_ref01_ent.load(short_ref01_match_dt0, nil)
-    assert_nil err
+    short_ref01_data_dt0_loaded = short_ref01_ent.load(short_ref01_match_dt0, nil)
     short_ref01_data_dt0_load_result = Helpers.to_map(short_ref01_data_dt0_loaded)
     assert !short_ref01_data_dt0_load_result.nil?
     assert_equal short_ref01_data_dt0_load_result["id"], short_ref01_data["id"]
@@ -93,7 +91,6 @@ def short_basic_setup(extra)
     "STEPHENKING_TEST_SHORT_ENTID" => idmap,
     "STEPHENKING_TEST_LIVE" => "FALSE",
     "STEPHENKING_TEST_EXPLAIN" => "FALSE",
-    "STEPHENKING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def short_basic_setup(extra)
   if env["STEPHENKING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STEPHENKING_APIKEY"],
       },
       extra || {},
     ])

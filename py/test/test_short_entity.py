@@ -50,16 +50,14 @@ class TestShortEntity:
         short_ref01_ent = client.Short(None)
         short_ref01_match = {}
 
-        short_ref01_list_result, err = short_ref01_ent.list(short_ref01_match, None)
-        assert err is None
+        short_ref01_list_result = short_ref01_ent.list(short_ref01_match, None)
         assert isinstance(short_ref01_list_result, list)
 
         # LOAD
         short_ref01_match_dt0 = {
             "id": short_ref01_data["id"],
         }
-        short_ref01_data_dt0_loaded, err = short_ref01_ent.load(short_ref01_match_dt0, None)
-        assert err is None
+        short_ref01_data_dt0_loaded = short_ref01_ent.load(short_ref01_match_dt0, None)
         short_ref01_data_dt0_load_result = helpers.to_map(short_ref01_data_dt0_loaded)
         assert short_ref01_data_dt0_load_result is not None
         assert short_ref01_data_dt0_load_result["id"] == short_ref01_data["id"]
@@ -102,7 +100,6 @@ def _short_basic_setup(extra):
         "STEPHENKING_TEST_SHORT_ENTID": idmap,
         "STEPHENKING_TEST_LIVE": "FALSE",
         "STEPHENKING_TEST_EXPLAIN": "FALSE",
-        "STEPHENKING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _short_basic_setup(extra):
     if env.get("STEPHENKING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STEPHENKING_APIKEY"),
             },
             extra or {},
         ])

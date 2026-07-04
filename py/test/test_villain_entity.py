@@ -50,16 +50,14 @@ class TestVillainEntity:
         villain_ref01_ent = client.Villain(None)
         villain_ref01_match = {}
 
-        villain_ref01_list_result, err = villain_ref01_ent.list(villain_ref01_match, None)
-        assert err is None
+        villain_ref01_list_result = villain_ref01_ent.list(villain_ref01_match, None)
         assert isinstance(villain_ref01_list_result, list)
 
         # LOAD
         villain_ref01_match_dt0 = {
             "id": villain_ref01_data["id"],
         }
-        villain_ref01_data_dt0_loaded, err = villain_ref01_ent.load(villain_ref01_match_dt0, None)
-        assert err is None
+        villain_ref01_data_dt0_loaded = villain_ref01_ent.load(villain_ref01_match_dt0, None)
         villain_ref01_data_dt0_load_result = helpers.to_map(villain_ref01_data_dt0_loaded)
         assert villain_ref01_data_dt0_load_result is not None
         assert villain_ref01_data_dt0_load_result["id"] == villain_ref01_data["id"]
@@ -102,7 +100,6 @@ def _villain_basic_setup(extra):
         "STEPHENKING_TEST_VILLAIN_ENTID": idmap,
         "STEPHENKING_TEST_LIVE": "FALSE",
         "STEPHENKING_TEST_EXPLAIN": "FALSE",
-        "STEPHENKING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _villain_basic_setup(extra):
     if env.get("STEPHENKING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STEPHENKING_APIKEY"),
             },
             extra or {},
         ])
