@@ -31,24 +31,28 @@ from stephenking_sdk import StephenKingSDK
 client = StephenKingSDK()
 ```
 
-### 2. List books
+### 2. List book records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.book.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    books = client.Book().list({})
+    for book in books:
+        print(book)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a book
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.book.load({"id": "example_id"})
-    print(result)
+    book = client.Book().load({"id": "example_id"})
+    print(book)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StephenKingSDK.test()
 
-result = client.book.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+book = client.Book().load({"id": "test01"})
+# book contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -266,7 +271,7 @@ API path: `/api/villains`
 
 ### Book
 
-Create an instance: `const book = client.book`
+Create an instance: `book = client.Book()`
 
 #### Operations
 
@@ -288,20 +293,20 @@ Create an instance: `const book = client.book`
 
 #### Example: Load
 
-```ts
-const book = await client.book.load({ id: 'book_id' })
+```python
+book = client.Book().load({"id": "book_id"})
 ```
 
 #### Example: List
 
-```ts
-const books = await client.book.list()
+```python
+books = client.Book().list({})
 ```
 
 
 ### Short
 
-Create an instance: `const short = client.short`
+Create an instance: `short = client.Short()`
 
 #### Operations
 
@@ -322,20 +327,20 @@ Create an instance: `const short = client.short`
 
 #### Example: Load
 
-```ts
-const short = await client.short.load({ id: 'short_id' })
+```python
+short = client.Short().load({"id": "short_id"})
 ```
 
 #### Example: List
 
-```ts
-const shorts = await client.short.list()
+```python
+shorts = client.Short().list({})
 ```
 
 
 ### Villain
 
-Create an instance: `const villain = client.villain`
+Create an instance: `villain = client.Villain()`
 
 #### Operations
 
@@ -357,14 +362,14 @@ Create an instance: `const villain = client.villain`
 
 #### Example: Load
 
-```ts
-const villain = await client.villain.load({ id: 'villain_id' })
+```python
+villain = client.Villain().load({"id": "villain_id"})
 ```
 
 #### Example: List
 
-```ts
-const villains = await client.villain.list()
+```python
+villains = client.Villain().list({})
 ```
 
 
@@ -438,7 +443,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-book = client.book
+book = client.Book()
 book.load({"id": "example_id"})
 
 # book.data_get() now returns the loaded book data

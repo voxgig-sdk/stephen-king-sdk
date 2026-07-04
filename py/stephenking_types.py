@@ -4,82 +4,77 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Book:
-    id: Optional[int] = None
-    isbn: Optional[str] = None
-    page: Optional[int] = None
-    publisher: Optional[str] = None
-    title: Optional[str] = None
-    year: Optional[int] = None
+class Book(TypedDict, total=False):
+    id: int
+    isbn: str
+    page: int
+    publisher: str
+    title: str
+    year: int
 
 
-@dataclass
-class BookLoadMatch:
+class BookLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class BookListMatch:
-    id: Optional[int] = None
-    isbn: Optional[str] = None
-    page: Optional[int] = None
-    publisher: Optional[str] = None
-    title: Optional[str] = None
-    year: Optional[int] = None
+class BookListMatch(TypedDict, total=False):
+    id: int
+    isbn: str
+    page: int
+    publisher: str
+    title: str
+    year: int
 
 
-@dataclass
-class Short:
-    collection: Optional[str] = None
-    id: Optional[int] = None
-    title: Optional[str] = None
-    type: Optional[str] = None
-    year: Optional[int] = None
+class Short(TypedDict, total=False):
+    collection: str
+    id: int
+    title: str
+    type: str
+    year: int
 
 
-@dataclass
-class ShortLoadMatch:
+class ShortLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ShortListMatch:
-    collection: Optional[str] = None
-    id: Optional[int] = None
-    title: Optional[str] = None
-    type: Optional[str] = None
-    year: Optional[int] = None
+class ShortListMatch(TypedDict, total=False):
+    collection: str
+    id: int
+    title: str
+    type: str
+    year: int
 
 
-@dataclass
-class Villain:
-    gender: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    note: Optional[str] = None
-    status: Optional[str] = None
-    work: Optional[str] = None
+class Villain(TypedDict, total=False):
+    gender: str
+    id: int
+    name: str
+    note: str
+    status: str
+    work: str
 
 
-@dataclass
-class VillainLoadMatch:
+class VillainLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class VillainListMatch:
-    gender: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    note: Optional[str] = None
-    status: Optional[str] = None
-    work: Optional[str] = None
-
+class VillainListMatch(TypedDict, total=False):
+    gender: str
+    id: int
+    name: str
+    note: str
+    status: str
+    work: str

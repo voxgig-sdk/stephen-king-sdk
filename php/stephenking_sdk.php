@@ -233,10 +233,10 @@ class StephenKingSDK
 
     private $_book = null;
 
-    // Idiomatic facade: $client->book()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Book() (PHP method
-    // names are case-insensitive).
-    public function book($data = null)
+    // Canonical facade: $client->Book()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->book()
+    // resolves here too.
+    public function Book($data = null)
     {
         require_once __DIR__ . '/entity/book_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class StephenKingSDK
 
     private $_short = null;
 
-    // Idiomatic facade: $client->short()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Short() (PHP method
-    // names are case-insensitive).
-    public function short($data = null)
+    // Canonical facade: $client->Short()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->short()
+    // resolves here too.
+    public function Short($data = null)
     {
         require_once __DIR__ . '/entity/short_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class StephenKingSDK
 
     private $_villain = null;
 
-    // Idiomatic facade: $client->villain()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Villain() (PHP method
-    // names are case-insensitive).
-    public function villain($data = null)
+    // Canonical facade: $client->Villain()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->villain()
+    // resolves here too.
+    public function Villain($data = null)
     {
         require_once __DIR__ . '/entity/villain_entity.php';
         if ($data === null) {

@@ -220,57 +220,27 @@ class StephenKingSDK:
         }
 
 
-    @property
-    def book(self):
-        """Idiomatic facade: client.book.list() / client.book.load({"id": ...})."""
-        from entity.book_entity import BookEntity
-        cached = getattr(self, "_book", None)
-        if cached is None:
-            cached = BookEntity(self, None)
-            self._book = cached
-        return cached
-
-    def Book(self, data=None):
-        # Deprecated: use client.book instead.
+    def Book(self, data=None) -> "BookEntity":
+        """Entity factory: client.Book().list({}) / client.Book().load({"id": ...})."""
         from entity.book_entity import BookEntity
         return BookEntity(self, data)
 
 
-    @property
-    def short(self):
-        """Idiomatic facade: client.short.list() / client.short.load({"id": ...})."""
-        from entity.short_entity import ShortEntity
-        cached = getattr(self, "_short", None)
-        if cached is None:
-            cached = ShortEntity(self, None)
-            self._short = cached
-        return cached
-
-    def Short(self, data=None):
-        # Deprecated: use client.short instead.
+    def Short(self, data=None) -> "ShortEntity":
+        """Entity factory: client.Short().list({}) / client.Short().load({"id": ...})."""
         from entity.short_entity import ShortEntity
         return ShortEntity(self, data)
 
 
-    @property
-    def villain(self):
-        """Idiomatic facade: client.villain.list() / client.villain.load({"id": ...})."""
-        from entity.villain_entity import VillainEntity
-        cached = getattr(self, "_villain", None)
-        if cached is None:
-            cached = VillainEntity(self, None)
-            self._villain = cached
-        return cached
-
-    def Villain(self, data=None):
-        # Deprecated: use client.villain instead.
+    def Villain(self, data=None) -> "VillainEntity":
+        """Entity factory: client.Villain().list({}) / client.Villain().load({"id": ...})."""
         from entity.villain_entity import VillainEntity
         return VillainEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "StephenKingSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class StephenKingSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.book_entity import BookEntity
+    from entity.short_entity import ShortEntity
+    from entity.villain_entity import VillainEntity

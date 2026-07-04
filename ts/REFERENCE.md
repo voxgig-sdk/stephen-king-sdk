@@ -133,7 +133,7 @@ Alias for `StephenKingSDK.test()`.
 ## BookEntity
 
 ```ts
-const book = client.book
+const book = client.Book()
 ```
 
 ### Fields
@@ -154,7 +154,7 @@ const book = client.book
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.book.list()
+const results = await client.Book().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -162,7 +162,7 @@ const results = await client.book.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.book.load({ id: 'book_id' })
+const result = await client.Book().load({ id: 'book_id' })
 ```
 
 ### Common Methods
@@ -196,7 +196,7 @@ Return a copy of the entity options.
 ## ShortEntity
 
 ```ts
-const short = client.short
+const short = client.Short()
 ```
 
 ### Fields
@@ -216,7 +216,7 @@ const short = client.short
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.short.list()
+const results = await client.Short().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -224,7 +224,7 @@ const results = await client.short.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.short.load({ id: 'short_id' })
+const result = await client.Short().load({ id: 'short_id' })
 ```
 
 ### Common Methods
@@ -258,7 +258,7 @@ Return a copy of the entity options.
 ## VillainEntity
 
 ```ts
-const villain = client.villain
+const villain = client.Villain()
 ```
 
 ### Fields
@@ -279,7 +279,7 @@ const villain = client.villain
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.villain.list()
+const results = await client.Villain().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -287,7 +287,7 @@ const results = await client.villain.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.villain.load({ id: 'villain_id' })
+const result = await client.Villain().load({ id: 'villain_id' })
 ```
 
 ### Common Methods

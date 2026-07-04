@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:book():list() / client:book():load({ id = ... })
-function StephenKingSDK:book(data)
+-- Idiomatic facade: client:Book():list() / client:Book():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StephenKingSDK:Book(data)
   local EntityMod = require("entity.book_entity")
   if data == nil then
     if self._book == nil then
@@ -256,15 +257,10 @@ function StephenKingSDK:book(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:book() instead.
-function StephenKingSDK:Book(data)
-  local EntityMod = require("entity.book_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:short():list() / client:short():load({ id = ... })
-function StephenKingSDK:short(data)
+-- Idiomatic facade: client:Short():list() / client:Short():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StephenKingSDK:Short(data)
   local EntityMod = require("entity.short_entity")
   if data == nil then
     if self._short == nil then
@@ -275,15 +271,10 @@ function StephenKingSDK:short(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:short() instead.
-function StephenKingSDK:Short(data)
-  local EntityMod = require("entity.short_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:villain():list() / client:villain():load({ id = ... })
-function StephenKingSDK:villain(data)
+-- Idiomatic facade: client:Villain():list() / client:Villain():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StephenKingSDK:Villain(data)
   local EntityMod = require("entity.villain_entity")
   if data == nil then
     if self._villain == nil then
@@ -291,12 +282,6 @@ function StephenKingSDK:villain(data)
     end
     return self._villain
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:villain() instead.
-function StephenKingSDK:Villain(data)
-  local EntityMod = require("entity.villain_entity")
   return EntityMod.new(self, data)
 end
 

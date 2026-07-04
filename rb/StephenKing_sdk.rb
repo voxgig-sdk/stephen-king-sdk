@@ -208,39 +208,21 @@ class StephenKingSDK
   end
 
 
-  # Idiomatic facade: client.book.list / client.book.load({ "id" => ... })
-  def book
-    require_relative 'entity/book_entity'
-    @book ||= BookEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.book instead.
+  # Canonical facade: client.Book.list / client.Book.load({ "id" => ... })
   def Book(data = nil)
     require_relative 'entity/book_entity'
     BookEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.short.list / client.short.load({ "id" => ... })
-  def short
-    require_relative 'entity/short_entity'
-    @short ||= ShortEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.short instead.
+  # Canonical facade: client.Short.list / client.Short.load({ "id" => ... })
   def Short(data = nil)
     require_relative 'entity/short_entity'
     ShortEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.villain.list / client.villain.load({ "id" => ... })
-  def villain
-    require_relative 'entity/villain_entity'
-    @villain ||= VillainEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.villain instead.
+  # Canonical facade: client.Villain.list / client.Villain.load({ "id" => ... })
   def Villain(data = nil)
     require_relative 'entity/villain_entity'
     VillainEntity.new(self, data)

@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## BookEntity
 
 ```ruby
-book = client.book
+book = client.Book
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ book = client.book
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.book.list(nil)
+results = client.Book.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -123,7 +123,7 @@ results = client.book.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.book.load({ "id" => "book_id" })
+result = client.Book.load({ "id" => "book_id" })
 ```
 
 ### Common Methods
@@ -159,7 +159,7 @@ Return the entity name.
 ## ShortEntity
 
 ```ruby
-short = client.short
+short = client.Short
 ```
 
 ### Fields
@@ -179,7 +179,7 @@ short = client.short
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.short.list(nil)
+results = client.Short.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -187,7 +187,7 @@ results = client.short.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.short.load({ "id" => "short_id" })
+result = client.Short.load({ "id" => "short_id" })
 ```
 
 ### Common Methods
@@ -223,7 +223,7 @@ Return the entity name.
 ## VillainEntity
 
 ```ruby
-villain = client.villain
+villain = client.Villain
 ```
 
 ### Fields
@@ -244,7 +244,7 @@ villain = client.villain
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.villain.list(nil)
+results = client.Villain.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -252,7 +252,7 @@ results = client.villain.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.villain.load({ "id" => "villain_id" })
+result = client.Villain.load({ "id" => "villain_id" })
 ```
 
 ### Common Methods

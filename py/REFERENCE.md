@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BookEntity
 
 ```python
-book = client.book
+book = client.Book()
 ```
 
 ### Fields
@@ -109,7 +109,9 @@ book = client.book
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.book.list({})
+results = client.Book().list({})
+for book in results:
+    print(book)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -117,7 +119,7 @@ results = client.book.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.book.load({"id": "book_id"})
+result = client.Book().load({"id": "book_id"})
 ```
 
 ### Common Methods
@@ -152,7 +154,7 @@ Return the entity name.
 ## ShortEntity
 
 ```python
-short = client.short
+short = client.Short()
 ```
 
 ### Fields
@@ -172,7 +174,9 @@ short = client.short
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.short.list({})
+results = client.Short().list({})
+for short in results:
+    print(short)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -180,7 +184,7 @@ results = client.short.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.short.load({"id": "short_id"})
+result = client.Short().load({"id": "short_id"})
 ```
 
 ### Common Methods
@@ -215,7 +219,7 @@ Return the entity name.
 ## VillainEntity
 
 ```python
-villain = client.villain
+villain = client.Villain()
 ```
 
 ### Fields
@@ -236,7 +240,9 @@ villain = client.villain
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.villain.list({})
+results = client.Villain().list({})
+for villain in results:
+    print(villain)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -244,7 +250,7 @@ results = client.villain.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.villain.load({"id": "villain_id"})
+result = client.Villain().load({"id": "villain_id"})
 ```
 
 ### Common Methods

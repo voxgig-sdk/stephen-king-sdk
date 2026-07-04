@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## BookEntity
 
 ```php
-$book = $client->book();
+$book = $client->Book();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $book = $client->book();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->book()->list([]);
+$results = $client->Book()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -122,7 +122,7 @@ $results = $client->book()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->book()->load(["id" => "book_id"]);
+$result = $client->Book()->load(["id" => "book_id"]);
 ```
 
 ### Common Methods
@@ -158,7 +158,7 @@ Return the entity name.
 ## ShortEntity
 
 ```php
-$short = $client->short();
+$short = $client->Short();
 ```
 
 ### Fields
@@ -178,7 +178,7 @@ $short = $client->short();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->short()->list([]);
+$results = $client->Short()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -186,7 +186,7 @@ $results = $client->short()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->short()->load(["id" => "short_id"]);
+$result = $client->Short()->load(["id" => "short_id"]);
 ```
 
 ### Common Methods
@@ -222,7 +222,7 @@ Return the entity name.
 ## VillainEntity
 
 ```php
-$villain = $client->villain();
+$villain = $client->Villain();
 ```
 
 ### Fields
@@ -243,7 +243,7 @@ $villain = $client->villain();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->villain()->list([]);
+$results = $client->Villain()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -251,7 +251,7 @@ $results = $client->villain()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->villain()->load(["id" => "villain_id"]);
+$result = $client->Villain()->load(["id" => "villain_id"]);
 ```
 
 ### Common Methods

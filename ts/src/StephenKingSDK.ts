@@ -206,42 +206,21 @@ class StephenKingSDK {
 
 
 
-  _book?: BookEntity
-
-  // Idiomatic facade: `client.book.list()` / `client.book.load({ id })`.
-  get book(): BookEntity {
-    return (this._book ??= new BookEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.book` instead. */
+  // Entity access: `client.Book().list()` / `client.Book().load({ id })`.
   Book(data?: any) {
     const self = this
     return new BookEntity(self,data)
   }
 
 
-  _short?: ShortEntity
-
-  // Idiomatic facade: `client.short.list()` / `client.short.load({ id })`.
-  get short(): ShortEntity {
-    return (this._short ??= new ShortEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.short` instead. */
+  // Entity access: `client.Short().list()` / `client.Short().load({ id })`.
   Short(data?: any) {
     const self = this
     return new ShortEntity(self,data)
   }
 
 
-  _villain?: VillainEntity
-
-  // Idiomatic facade: `client.villain.list()` / `client.villain.load({ id })`.
-  get villain(): VillainEntity {
-    return (this._villain ??= new VillainEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.villain` instead. */
+  // Entity access: `client.Villain().list()` / `client.Villain().load({ id })`.
   Villain(data?: any) {
     const self = this
     return new VillainEntity(self,data)

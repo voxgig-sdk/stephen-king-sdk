@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## BookEntity
 
 ```lua
-local book = client:book(nil)
+local book = client:Book(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local book = client:book(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:book():list()
+local results, err = client:Book():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -120,7 +120,7 @@ local results, err = client:book():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:book():load({ id = "book_id" })
+local result, err = client:Book():load({ id = "book_id" })
 ```
 
 ### Common Methods
@@ -156,7 +156,7 @@ Return the entity name.
 ## ShortEntity
 
 ```lua
-local short = client:short(nil)
+local short = client:Short(nil)
 ```
 
 ### Fields
@@ -176,7 +176,7 @@ local short = client:short(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:short():list()
+local results, err = client:Short():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -184,7 +184,7 @@ local results, err = client:short():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:short():load({ id = "short_id" })
+local result, err = client:Short():load({ id = "short_id" })
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ Return the entity name.
 ## VillainEntity
 
 ```lua
-local villain = client:villain(nil)
+local villain = client:Villain(nil)
 ```
 
 ### Fields
@@ -241,7 +241,7 @@ local villain = client:villain(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:villain():list()
+local results, err = client:Villain():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -249,7 +249,7 @@ local results, err = client:villain():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:villain():load({ id = "villain_id" })
+local result, err = client:Villain():load({ id = "villain_id" })
 ```
 
 ### Common Methods

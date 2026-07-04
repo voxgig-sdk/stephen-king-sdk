@@ -28,16 +28,14 @@ require_relative "StephenKing_sdk"
 client = StephenKingSDK.new
 ```
 
-### 2. List books
+### 2. List book records
 
 ```ruby
 begin
-  result = client.book.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Book records — iterate directly.
+  books = client.Book.list
+  books.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.book.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Book record (raises on error).
+  book = client.Book.load({ "id" => "example_id" })
+  puts book
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = StephenKingSDK.test
+client = StephenKingSDK.test({
+  "entity" => { "book" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.book.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+book = client.Book.load({ "id" => "test01" })
+puts book
 ```
 
 ### Use a custom fetch function
@@ -270,7 +273,7 @@ API path: `/api/villains`
 
 ### Book
 
-Create an instance: `const book = client.book`
+Create an instance: `book = client.Book`
 
 #### Operations
 
@@ -292,20 +295,22 @@ Create an instance: `const book = client.book`
 
 #### Example: Load
 
-```ts
-const book = await client.book.load({ id: 'book_id' })
+```ruby
+# load returns the bare Book record (raises on error).
+book = client.Book.load({ "id" => "book_id" })
 ```
 
 #### Example: List
 
-```ts
-const books = await client.book.list()
+```ruby
+# list returns an Array of Book records (raises on error).
+books = client.Book.list
 ```
 
 
 ### Short
 
-Create an instance: `const short = client.short`
+Create an instance: `short = client.Short`
 
 #### Operations
 
@@ -326,20 +331,22 @@ Create an instance: `const short = client.short`
 
 #### Example: Load
 
-```ts
-const short = await client.short.load({ id: 'short_id' })
+```ruby
+# load returns the bare Short record (raises on error).
+short = client.Short.load({ "id" => "short_id" })
 ```
 
 #### Example: List
 
-```ts
-const shorts = await client.short.list()
+```ruby
+# list returns an Array of Short records (raises on error).
+shorts = client.Short.list
 ```
 
 
 ### Villain
 
-Create an instance: `const villain = client.villain`
+Create an instance: `villain = client.Villain`
 
 #### Operations
 
@@ -361,14 +368,16 @@ Create an instance: `const villain = client.villain`
 
 #### Example: Load
 
-```ts
-const villain = await client.villain.load({ id: 'villain_id' })
+```ruby
+# load returns the bare Villain record (raises on error).
+villain = client.Villain.load({ "id" => "villain_id" })
 ```
 
 #### Example: List
 
-```ts
-const villains = await client.villain.list()
+```ruby
+# list returns an Array of Villain records (raises on error).
+villains = client.Villain.list
 ```
 
 
@@ -443,7 +452,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-book = client.book
+book = client.Book
 book.load({ "id" => "example_id" })
 
 # book.data_get now returns the loaded book data
