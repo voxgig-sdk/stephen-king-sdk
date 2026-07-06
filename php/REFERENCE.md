@@ -8,7 +8,7 @@ Complete API reference for the StephenKing PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/stephen-king_sdk.php';
+require_once __DIR__ . '/stephenking_sdk.php';
 
 $client = new StephenKingSDK($options);
 ```
@@ -53,11 +53,11 @@ Create a new `ShortEntity` instance. Pass `null` for no initial data.
 
 Create a new `VillainEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): StephenKingUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,21 +100,21 @@ $book = $client->Book();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `isbn` | ``$STRING`` | No |  |
-| `page` | ``$INTEGER`` | No |  |
-| `publisher` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `isbn` | `string` | No |  |
+| `page` | `int` | No |  |
+| `publisher` | `string` | No |  |
+| `title` | `string` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Book()->list([]);
+$results = $client->Book()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -127,19 +127,19 @@ $result = $client->Book()->load(["id" => "book_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -148,7 +148,7 @@ Set the entity match criteria.
 Create a new `BookEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -165,20 +165,20 @@ $short = $client->Short();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `collection` | `string` | No |  |
+| `id` | `int` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Short()->list([]);
+$results = $client->Short()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -191,19 +191,19 @@ $result = $client->Short()->load(["id" => "short_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -212,7 +212,7 @@ Set the entity match criteria.
 Create a new `ShortEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -229,21 +229,21 @@ $villain = $client->Villain();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `work` | ``$STRING`` | No |  |
+| `gender` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `note` | `string` | No |  |
+| `status` | `string` | No |  |
+| `work` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Villain()->list([]);
+$results = $client->Villain()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -256,19 +256,19 @@ $result = $client->Villain()->load(["id" => "villain_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -277,7 +277,7 @@ Set the entity match criteria.
 Create a new `VillainEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

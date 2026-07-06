@@ -23,8 +23,7 @@ type BookLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// BookListMatch mirrors the book fields as an all-optional match
-// filter (Go analog of Partial<Book>).
+// BookListMatch is the typed request payload for Book.ListTyped.
 type BookListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Isbn *string `json:"isbn,omitempty"`
@@ -48,8 +47,7 @@ type ShortLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ShortListMatch mirrors the short fields as an all-optional match
-// filter (Go analog of Partial<Short>).
+// ShortListMatch is the typed request payload for Short.ListTyped.
 type ShortListMatch struct {
 	Collection *string `json:"collection,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -73,8 +71,7 @@ type VillainLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// VillainListMatch mirrors the villain fields as an all-optional match
-// filter (Go analog of Partial<Villain>).
+// VillainListMatch is the typed request payload for Villain.ListTyped.
 type VillainListMatch struct {
 	Gender *string `json:"gender,omitempty"`
 	Id *int `json:"id,omitempty"`

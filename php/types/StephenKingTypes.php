@@ -29,7 +29,7 @@ class BookLoadMatch
     public int $id;
 }
 
-/** Match filter for Book#list (any subset of Book fields). */
+/** Request payload for Book#list. */
 class BookListMatch
 {
     public ?int $id = null;
@@ -56,7 +56,7 @@ class ShortLoadMatch
     public int $id;
 }
 
-/** Match filter for Short#list (any subset of Short fields). */
+/** Request payload for Short#list. */
 class ShortListMatch
 {
     public ?string $collection = null;
@@ -83,7 +83,7 @@ class VillainLoadMatch
     public int $id;
 }
 
-/** Match filter for Villain#list (any subset of Villain fields). */
+/** Request payload for Villain#list. */
 class VillainListMatch
 {
     public ?string $gender = null;

@@ -8,7 +8,7 @@ Complete API reference for the StephenKing Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'stephen-king_sdk'
+require_relative 'StephenKing_sdk'
 
 client = StephenKingSDK.new(options)
 ```
@@ -101,21 +101,21 @@ book = client.Book
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `isbn` | ``$STRING`` | No |  |
-| `page` | ``$INTEGER`` | No |  |
-| `publisher` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `id` | `Integer` | No |  |
+| `isbn` | `String` | No |  |
+| `page` | `Integer` | No |  |
+| `publisher` | `String` | No |  |
+| `title` | `String` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Book.list(nil)
+results = client.Book.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -166,20 +166,20 @@ short = client.Short
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `collection` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `title` | `String` | No |  |
+| `type` | `String` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Short.list(nil)
+results = client.Short.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -230,21 +230,21 @@ villain = client.Villain
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `work` | ``$STRING`` | No |  |
+| `gender` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `note` | `String` | No |  |
+| `status` | `String` | No |  |
+| `work` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Villain.list(nil)
+results = client.Villain.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

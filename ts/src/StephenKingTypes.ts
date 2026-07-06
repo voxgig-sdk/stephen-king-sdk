@@ -18,7 +18,14 @@ export interface BookLoadMatch {
   id: number
 }
 
-export type BookListMatch = Partial<Book>
+export interface BookListMatch {
+  id?: number
+  isbn?: string
+  page?: number
+  publisher?: string
+  title?: string
+  year?: number
+}
 
 export interface Short {
   collection?: string
@@ -32,7 +39,13 @@ export interface ShortLoadMatch {
   id: number
 }
 
-export type ShortListMatch = Partial<Short>
+export interface ShortListMatch {
+  collection?: string
+  id?: number
+  title?: string
+  type?: string
+  year?: number
+}
 
 export interface Villain {
   gender?: string
@@ -47,5 +60,12 @@ export interface VillainLoadMatch {
   id: number
 }
 
-export type VillainListMatch = Partial<Villain>
+export interface VillainListMatch {
+  gender?: string
+  id?: number
+  name?: string
+  note?: string
+  status?: string
+  work?: string
+}
 

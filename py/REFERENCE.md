@@ -8,7 +8,7 @@ Complete API reference for the StephenKing Python SDK.
 ### Constructor
 
 ```python
-from stephen-king_sdk import StephenKingSDK
+from stephenking_sdk import StephenKingSDK
 
 client = StephenKingSDK(options)
 ```
@@ -95,21 +95,21 @@ book = client.Book()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `isbn` | ``$STRING`` | No |  |
-| `page` | ``$INTEGER`` | No |  |
-| `publisher` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `isbn` | `str` | No |  |
+| `page` | `int` | No |  |
+| `publisher` | `str` | No |  |
+| `title` | `str` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Book().list({})
+results = client.Book().list()
 for book in results:
     print(book)
 ```
@@ -161,20 +161,20 @@ short = client.Short()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `collection` | `str` | No |  |
+| `id` | `int` | No |  |
+| `title` | `str` | No |  |
+| `type` | `str` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Short().list({})
+results = client.Short().list()
 for short in results:
     print(short)
 ```
@@ -226,21 +226,21 @@ villain = client.Villain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `work` | ``$STRING`` | No |  |
+| `gender` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `note` | `str` | No |  |
+| `status` | `str` | No |  |
+| `work` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Villain().list({})
+results = client.Villain().list()
 for villain in results:
     print(villain)
 ```

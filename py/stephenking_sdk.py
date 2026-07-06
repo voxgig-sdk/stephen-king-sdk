@@ -221,19 +221,19 @@ class StephenKingSDK:
 
 
     def Book(self, data=None) -> "BookEntity":
-        """Entity factory: client.Book().list({}) / client.Book().load({"id": ...})."""
+        """Entity factory: client.Book().list() / client.Book().load({"id": ...})."""
         from entity.book_entity import BookEntity
         return BookEntity(self, data)
 
 
     def Short(self, data=None) -> "ShortEntity":
-        """Entity factory: client.Short().list({}) / client.Short().load({"id": ...})."""
+        """Entity factory: client.Short().list() / client.Short().load({"id": ...})."""
         from entity.short_entity import ShortEntity
         return ShortEntity(self, data)
 
 
     def Villain(self, data=None) -> "VillainEntity":
-        """Entity factory: client.Villain().list({}) / client.Villain().load({"id": ...})."""
+        """Entity factory: client.Villain().list() / client.Villain().load({"id": ...})."""
         from entity.villain_entity import VillainEntity
         return VillainEntity(self, data)
 

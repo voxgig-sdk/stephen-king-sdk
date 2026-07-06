@@ -18,6 +18,12 @@
 ---@field id number
 
 ---@class BookListMatch
+---@field id? number
+---@field isbn? string
+---@field page? number
+---@field publisher? string
+---@field title? string
+---@field year? number
 
 ---@class Short
 ---@field collection? string
@@ -30,6 +36,11 @@
 ---@field id number
 
 ---@class ShortListMatch
+---@field collection? string
+---@field id? number
+---@field title? string
+---@field type? string
+---@field year? number
 
 ---@class Villain
 ---@field gender? string
@@ -43,6 +54,12 @@
 ---@field id number
 
 ---@class VillainListMatch
+---@field gender? string
+---@field id? number
+---@field name? string
+---@field note? string
+---@field status? string
+---@field work? string
 
 local M = {}
 

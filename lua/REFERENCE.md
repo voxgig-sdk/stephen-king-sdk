@@ -98,12 +98,12 @@ local book = client:Book(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `isbn` | ``$STRING`` | No |  |
-| `page` | ``$INTEGER`` | No |  |
-| `publisher` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `isbn` | `string` | No |  |
+| `page` | `number` | No |  |
+| `publisher` | `string` | No |  |
+| `title` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -163,11 +163,11 @@ local short = client:Short(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `collection` | `string` | No |  |
+| `id` | `number` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -227,12 +227,12 @@ local villain = client:Villain(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `work` | ``$STRING`` | No |  |
+| `gender` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `note` | `string` | No |  |
+| `status` | `string` | No |  |
+| `work` | `string` | No |  |
 
 ### Operations
 

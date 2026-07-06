@@ -140,12 +140,12 @@ const book = client.Book()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `isbn` | ``$STRING`` | No |  |
-| `page` | ``$INTEGER`` | No |  |
-| `publisher` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `isbn` | `string` | No |  |
+| `page` | `number` | No |  |
+| `publisher` | `string` | No |  |
+| `title` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -162,7 +162,7 @@ const results = await client.Book().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Book().load({ id: 'book_id' })
+const result = await client.Book().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -203,11 +203,11 @@ const short = client.Short()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `collection` | `string` | No |  |
+| `id` | `number` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -224,7 +224,7 @@ const results = await client.Short().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Short().load({ id: 'short_id' })
+const result = await client.Short().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -265,12 +265,12 @@ const villain = client.Villain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `work` | ``$STRING`` | No |  |
+| `gender` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `note` | `string` | No |  |
+| `status` | `string` | No |  |
+| `work` | `string` | No |  |
 
 ### Operations
 
@@ -287,7 +287,7 @@ const results = await client.Villain().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Villain().load({ id: 'villain_id' })
+const result = await client.Villain().load({ id: 1 })
 ```
 
 ### Common Methods
