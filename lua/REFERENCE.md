@@ -120,7 +120,7 @@ local results, err = client:Book():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Book():load({ id = "book_id" })
+local result, err = client:Book():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ local results, err = client:Short():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Short():load({ id = "short_id" })
+local result, err = client:Short():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -249,7 +249,7 @@ local results, err = client:Villain():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Villain():load({ id = "villain_id" })
+local result, err = client:Villain():load({ id = 1 })
 ```
 
 ### Common Methods

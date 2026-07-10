@@ -119,7 +119,7 @@ for book in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Book().load({"id": "book_id"})
+result = client.Book().load({"id": 1})
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ for short in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Short().load({"id": "short_id"})
+result = client.Short().load({"id": 1})
 ```
 
 ### Common Methods
@@ -250,7 +250,7 @@ for villain in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Villain().load({"id": "villain_id"})
+result = client.Villain().load({"id": 1})
 ```
 
 ### Common Methods

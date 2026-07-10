@@ -15,10 +15,10 @@ main: {
           url: "https://stephen-king-api.onrender.com"
         }
       ]
+      summary: "Provides access to Stephen King books, short stories, and villains."
       title: "Stephen King API"
       version: "1.0.0"
+      website: "https://stephen-king-api.onrender.com"
       "x-documentation": "https://stephen-king-api.onrender.com/"
     }
   }
-}
-

@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    book = client.Book().load({"id": "example_id"})
+    book = client.Book().load({"id": 1})
     print(book)
 except Exception as err:
     print(f"load failed: {err}")
@@ -327,7 +327,7 @@ Create an instance: `book = client.Book()`
 #### Example: Load
 
 ```python
-book = client.Book().load({"id": "book_id"})
+book = client.Book().load({"id": 1})
 ```
 
 #### Example: List
@@ -361,7 +361,7 @@ Create an instance: `short = client.Short()`
 #### Example: Load
 
 ```python
-short = client.Short().load({"id": "short_id"})
+short = client.Short().load({"id": 1})
 ```
 
 #### Example: List
@@ -396,7 +396,7 @@ Create an instance: `villain = client.Villain()`
 #### Example: Load
 
 ```python
-villain = client.Villain().load({"id": "villain_id"})
+villain = client.Villain().load({"id": 1})
 ```
 
 #### Example: List

@@ -99,6 +99,7 @@ same parameters as `Direct()`.
 
 ```go
 book := client.Book(nil)
+fmt.Println(book.GetName()) // "book"
 ```
 
 ### Fields
@@ -120,6 +121,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Book(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -127,7 +132,11 @@ results, err := client.Book(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Book(nil).Load(map[string]any{"id": "book_id"}, nil)
+result, err := client.Book(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -158,6 +167,7 @@ Return the entity name.
 
 ```go
 short := client.Short(nil)
+fmt.Println(short.GetName()) // "short"
 ```
 
 ### Fields
@@ -178,6 +188,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Short(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -185,7 +199,11 @@ results, err := client.Short(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Short(nil).Load(map[string]any{"id": "short_id"}, nil)
+result, err := client.Short(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -216,6 +234,7 @@ Return the entity name.
 
 ```go
 villain := client.Villain(nil)
+fmt.Println(villain.GetName()) // "villain"
 ```
 
 ### Fields
@@ -237,6 +256,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Villain(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -244,7 +267,11 @@ results, err := client.Villain(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Villain(nil).Load(map[string]any{"id": "villain_id"}, nil)
+result, err := client.Villain(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

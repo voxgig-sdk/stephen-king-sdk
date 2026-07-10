@@ -50,7 +50,7 @@ end
 ### 3. Load a book
 
 ```lua
-local book, err = client:Book():load({ id = "example_id" })
+local book, err = client:Book():load({ id = 1 })
 if err then error(err) end
 print(book)
 ```
@@ -313,7 +313,7 @@ Create an instance: `local book = client:Book(nil)`
 #### Example: Load
 
 ```lua
-local book, err = client:Book():load({ id = "book_id" })
+local book, err = client:Book():load({ id = 1 })
 ```
 
 #### Example: List
@@ -347,7 +347,7 @@ Create an instance: `local short = client:Short(nil)`
 #### Example: Load
 
 ```lua
-local short, err = client:Short():load({ id = "short_id" })
+local short, err = client:Short():load({ id = 1 })
 ```
 
 #### Example: List
@@ -382,7 +382,7 @@ Create an instance: `local villain = client:Villain(nil)`
 #### Example: Load
 
 ```lua
-local villain, err = client:Villain():load({ id = "villain_id" })
+local villain, err = client:Villain():load({ id = 1 })
 ```
 
 #### Example: List

@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Book record (raises on error).
-  book = client.Book.load({ "id" => "example_id" })
+  book = client.Book.load({ "id" => 1 })
   puts book
 rescue => err
   warn "load failed: #{err}"
@@ -325,7 +325,7 @@ Create an instance: `book = client.Book`
 
 ```ruby
 # load returns the bare Book record (raises on error).
-book = client.Book.load({ "id" => "book_id" })
+book = client.Book.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -361,7 +361,7 @@ Create an instance: `short = client.Short`
 
 ```ruby
 # load returns the bare Short record (raises on error).
-short = client.Short.load({ "id" => "short_id" })
+short = client.Short.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -398,7 +398,7 @@ Create an instance: `villain = client.Villain`
 
 ```ruby
 # load returns the bare Villain record (raises on error).
-villain = client.Villain.load({ "id" => "villain_id" })
+villain = client.Villain.load({ "id" => 1 })
 ```
 
 #### Example: List

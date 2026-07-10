@@ -123,7 +123,7 @@ results = client.Book.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Book.load({ "id" => "book_id" })
+result = client.Book.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -187,7 +187,7 @@ results = client.Short.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Short.load({ "id" => "short_id" })
+result = client.Short.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ results = client.Villain.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Villain.load({ "id" => "villain_id" })
+result = client.Villain.load({ "id" => 1 })
 ```
 
 ### Common Methods

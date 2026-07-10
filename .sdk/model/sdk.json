@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -601,14 +598,17 @@
           "name": "Hunter Van Lear"
         },
         "description": "Provides access to Stephen King books, short stories, and villains. Retrieve information by ID.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://stephen-king-api.onrender.com"
           }
         ],
+        "summary": "Provides access to Stephen King books, short stories, and villains.",
         "title": "Stephen King API",
         "version": "1.0.0",
+        "website": "https://stephen-king-api.onrender.com",
         "x-documentation": "https://stephen-king-api.onrender.com/"
       },
       "option": {},
@@ -662,6 +662,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -712,6 +715,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
