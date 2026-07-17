@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- StephenKing SDK exists test
 
 local sdk = require("stephen-king_sdk")
 
