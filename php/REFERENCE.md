@@ -102,7 +102,7 @@ $book = $client->Book();
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
 | `isbn` | `string` | No |  |
-| `page` | `int` | No |  |
+| `pages` | `int` | No |  |
 | `publisher` | `string` | No |  |
 | `title` | `string` | No |  |
 | `year` | `int` | No |  |
@@ -232,7 +232,7 @@ $villain = $client->Villain();
 | `gender` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `note` | `string` | No |  |
+| `notes` | `string` | No |  |
 | `status` | `string` | No |  |
 | `work` | `string` | No |  |
 

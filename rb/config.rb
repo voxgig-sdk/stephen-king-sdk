@@ -43,7 +43,7 @@ module StephenKingConfig
             },
             {
               "active" => true,
-              "name" => "page",
+              "name" => "pages",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 2,
@@ -79,6 +79,7 @@ module StephenKingConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/books",
                   "parts" => [
@@ -115,6 +116,7 @@ module StephenKingConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/book/{id}",
                   "parts" => [
@@ -188,6 +190,7 @@ module StephenKingConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/shorts",
                   "parts" => [
@@ -224,6 +227,7 @@ module StephenKingConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/short/{id}",
                   "parts" => [
@@ -275,7 +279,7 @@ module StephenKingConfig
             },
             {
               "active" => true,
-              "name" => "note",
+              "name" => "notes",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
@@ -304,6 +308,7 @@ module StephenKingConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/villains",
                   "parts" => [
@@ -340,6 +345,7 @@ module StephenKingConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/villain/{id}",
                   "parts" => [

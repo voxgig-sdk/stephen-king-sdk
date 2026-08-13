@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'StephenKing',
   }
 
 
@@ -76,7 +76,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "page",
+          "name": "pages",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 2
@@ -112,6 +112,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/books",
               "parts": [
@@ -148,6 +149,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/book/{id}",
               "parts": [
@@ -221,6 +223,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/shorts",
               "parts": [
@@ -257,6 +260,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/short/{id}",
               "parts": [
@@ -308,7 +312,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "note",
+          "name": "notes",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -337,6 +341,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/villains",
               "parts": [
@@ -373,6 +378,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/villain/{id}",
               "parts": [

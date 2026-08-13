@@ -100,7 +100,7 @@ local book = client:Book(nil)
 | --- | --- | --- | --- |
 | `id` | `number` | No |  |
 | `isbn` | `string` | No |  |
-| `page` | `number` | No |  |
+| `pages` | `number` | No |  |
 | `publisher` | `string` | No |  |
 | `title` | `string` | No |  |
 | `year` | `number` | No |  |
@@ -230,7 +230,7 @@ local villain = client:Villain(nil)
 | `gender` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `note` | `string` | No |  |
+| `notes` | `string` | No |  |
 | `status` | `string` | No |  |
 | `work` | `string` | No |  |
 

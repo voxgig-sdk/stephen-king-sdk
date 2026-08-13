@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Book record (raises on error).
+  # load returns the ENTITY — call data_get for the Book record (raises on error).
   book = client.Book.load({ "id" => 1 })
   puts book
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  books = client.Book.list()
+  shorts = client.Short.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,12 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = StephenKingSDK.test({
-  "entity" => { "book" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "short" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-book = client.Book.list()
-puts book
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+short = client.Short.list()
+puts short
 ```
 
 ### Use a custom fetch function
@@ -256,7 +257,7 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `id` |  |
 | `isbn` |  |
-| `page` |  |
+| `pages` |  |
 | `publisher` |  |
 | `title` |  |
 | `year` |  |
@@ -286,7 +287,7 @@ API path: `/api/shorts`
 | `gender` |  |
 | `id` |  |
 | `name` |  |
-| `note` |  |
+| `notes` |  |
 | `status` |  |
 | `work` |  |
 
@@ -316,7 +317,7 @@ Create an instance: `book = client.Book`
 | --- | --- | --- |
 | `id` | `Integer` |  |
 | `isbn` | `String` |  |
-| `page` | `Integer` |  |
+| `pages` | `Integer` |  |
 | `publisher` | `String` |  |
 | `title` | `String` |  |
 | `year` | `Integer` |  |
@@ -324,7 +325,7 @@ Create an instance: `book = client.Book`
 #### Example: Load
 
 ```ruby
-# load returns the bare Book record (raises on error).
+# load returns the ENTITY — call data_get for the Book record (raises on error).
 book = client.Book.load({ "id" => 1 })
 ```
 
@@ -360,7 +361,7 @@ Create an instance: `short = client.Short`
 #### Example: Load
 
 ```ruby
-# load returns the bare Short record (raises on error).
+# load returns the ENTITY — call data_get for the Short record (raises on error).
 short = client.Short.load({ "id" => 1 })
 ```
 
@@ -390,14 +391,14 @@ Create an instance: `villain = client.Villain`
 | `gender` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `note` | `String` |  |
+| `notes` | `String` |  |
 | `status` | `String` |  |
 | `work` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Villain record (raises on error).
+# load returns the ENTITY — call data_get for the Villain record (raises on error).
 villain = client.Villain.load({ "id" => 1 })
 ```
 
@@ -485,11 +486,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-book = client.Book
-book.list()
+short = client.Short
+short.list()
 
-# book.data_get now returns the book data from the last list
-# book.match_get returns the last match criteria
+# short.data_get now returns the short data from the last list
+# short.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

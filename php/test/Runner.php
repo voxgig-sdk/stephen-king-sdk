@@ -43,8 +43,8 @@ class StephenKingTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('STEPHENKING_TEST_LIVE');
-        $override = self::getenv('STEPHENKING_TEST_OVERRIDE');
+        $live = self::getenv('STEPHEN_KING_TEST_LIVE');
+        $override = self::getenv('STEPHEN_KING_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class StephenKingTestRunner
             }
         }
 
-        $explain = self::getenv('STEPHENKING_TEST_EXPLAIN');
+        $explain = self::getenv('STEPHEN_KING_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['STEPHENKING_TEST_EXPLAIN'] = $explain;
+            $m['STEPHEN_KING_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -16,7 +16,7 @@ main: kit: entity: book: {
       type: "`$STRING`"
     }
     {
-      name: "page"
+      name: "pages"
       req: false
       type: "`$INTEGER`"
     }

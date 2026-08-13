@@ -113,11 +113,11 @@ function villain_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["STEPHENKING_TEST_VILLAIN_ENTID"] = {},
-    ["STEPHENKING_TEST_LIVE"] = "FALSE",
+    ["STEPHEN_KING_TEST_VILLAIN_ENTID"] = {},
+    ["STEPHEN_KING_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["STEPHENKING_TEST_LIVE"] == "TRUE"
+  local live = env["STEPHEN_KING_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

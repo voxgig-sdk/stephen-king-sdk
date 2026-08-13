@@ -16,7 +16,7 @@
 # @!attribute [rw] isbn
 #   @return [String, nil]
 #
-# @!attribute [rw] page
+# @!attribute [rw] pages
 #   @return [Integer, nil]
 #
 # @!attribute [rw] publisher
@@ -30,7 +30,7 @@
 Book = Struct.new(
   :id,
   :isbn,
-  :page,
+  :pages,
   :publisher,
   :title,
   :year,
@@ -54,7 +54,7 @@ BookLoadMatch = Struct.new(
 # @!attribute [rw] isbn
 #   @return [String, nil]
 #
-# @!attribute [rw] page
+# @!attribute [rw] pages
 #   @return [Integer, nil]
 #
 # @!attribute [rw] publisher
@@ -68,7 +68,7 @@ BookLoadMatch = Struct.new(
 BookListMatch = Struct.new(
   :id,
   :isbn,
-  :page,
+  :pages,
   :publisher,
   :title,
   :year,
@@ -145,7 +145,7 @@ ShortListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] note
+# @!attribute [rw] notes
 #   @return [String, nil]
 #
 # @!attribute [rw] status
@@ -157,7 +157,7 @@ Villain = Struct.new(
   :gender,
   :id,
   :name,
-  :note,
+  :notes,
   :status,
   :work,
   keyword_init: true
@@ -183,7 +183,7 @@ VillainLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] note
+# @!attribute [rw] notes
 #   @return [String, nil]
 #
 # @!attribute [rw] status
@@ -195,7 +195,7 @@ VillainListMatch = Struct.new(
   :gender,
   :id,
   :name,
-  :note,
+  :notes,
   :status,
   :work,
   keyword_init: true

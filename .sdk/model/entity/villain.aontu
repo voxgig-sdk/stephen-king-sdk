@@ -21,7 +21,7 @@ main: kit: entity: villain: {
       type: "`$STRING`"
     }
     {
-      name: "note"
+      name: "notes"
       req: false
       type: "`$STRING`"
     }

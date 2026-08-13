@@ -62,7 +62,7 @@ class BookEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set STEPHENKING_TEST_BOOK_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set STEPHEN_KING_TEST_BOOK_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class BookEntityTest < Minitest::Test
       "id" => book_ref01_data["id"],
     }
     book_ref01_data_dt0_loaded = book_ref01_ent.load(book_ref01_match_dt0, nil)
-    book_ref01_data_dt0_load_result = Helpers.to_map(book_ref01_data_dt0_loaded)
+    book_ref01_data_dt0_load_result = Helpers.to_map(book_ref01_data_dt0_loaded.respond_to?(:data_get) ? book_ref01_data_dt0_loaded.data_get : book_ref01_data_dt0_loaded)
     assert !book_ref01_data_dt0_load_result.nil?
     assert_equal book_ref01_data_dt0_load_result["id"], book_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def book_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["STEPHENKING_TEST_BOOK_ENTID"]
+  entid_env_raw = ENV["STEPHEN_KING_TEST_BOOK_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "STEPHENKING_TEST_BOOK_ENTID" => idmap,
-    "STEPHENKING_TEST_LIVE" => "FALSE",
-    "STEPHENKING_TEST_EXPLAIN" => "FALSE",
+    "STEPHEN_KING_TEST_BOOK_ENTID" => idmap,
+    "STEPHEN_KING_TEST_LIVE" => "FALSE",
+    "STEPHEN_KING_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["STEPHENKING_TEST_BOOK_ENTID"])
+    env["STEPHEN_KING_TEST_BOOK_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["STEPHENKING_TEST_LIVE"] == "TRUE"
+  if env["STEPHEN_KING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def book_basic_setup(extra)
     client = StephenKingSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["STEPHENKING_TEST_LIVE"] == "TRUE"
+  live = env["STEPHEN_KING_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["STEPHENKING_TEST_EXPLAIN"] == "TRUE",
+    explain: env["STEPHEN_KING_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

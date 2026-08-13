@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local books, err = client:Book():list()
+local shorts, err = client:Short():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Book():list()
+local result, err = client:Short():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -245,7 +245,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `id` |  |
 | `isbn` |  |
-| `page` |  |
+| `pages` |  |
 | `publisher` |  |
 | `title` |  |
 | `year` |  |
@@ -275,7 +275,7 @@ API path: `/api/shorts`
 | `gender` |  |
 | `id` |  |
 | `name` |  |
-| `note` |  |
+| `notes` |  |
 | `status` |  |
 | `work` |  |
 
@@ -305,7 +305,7 @@ Create an instance: `local book = client:Book(nil)`
 | --- | --- | --- |
 | `id` | `number` |  |
 | `isbn` | `string` |  |
-| `page` | `number` |  |
+| `pages` | `number` |  |
 | `publisher` | `string` |  |
 | `title` | `string` |  |
 | `year` | `number` |  |
@@ -375,7 +375,7 @@ Create an instance: `local villain = client:Villain(nil)`
 | `gender` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 | `status` | `string` |  |
 | `work` | `string` |  |
 
@@ -468,11 +468,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local book = client:Book()
-book:list()
+local short = client:Short()
+short:list()
 
--- book:data_get() now returns the book data from the last list
--- book:match_get() returns the last match criteria
+-- short:data_get() now returns the short data from the last list
+-- short:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

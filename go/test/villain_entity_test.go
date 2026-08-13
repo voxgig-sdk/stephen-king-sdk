@@ -92,7 +92,7 @@ func TestVillainEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set STEPHENKING_TEST_VILLAIN_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set STEPHEN_KING_TEST_VILLAIN_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -128,7 +128,7 @@ func TestVillainEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		villainRef01DataDt0LoadResult := core.ToMapAny(villainRef01DataDt0Loaded)
+		villainRef01DataDt0LoadResult := core.ToMapAny(entityData(villainRef01DataDt0Loaded))
 		if villainRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}
@@ -176,21 +176,21 @@ func villainBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("STEPHENKING_TEST_VILLAIN_ENTID")
+	entidEnvRaw := os.Getenv("STEPHEN_KING_TEST_VILLAIN_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"STEPHENKING_TEST_VILLAIN_ENTID": idmap,
-		"STEPHENKING_TEST_LIVE":      "FALSE",
-		"STEPHENKING_TEST_EXPLAIN":   "FALSE",
+		"STEPHEN_KING_TEST_VILLAIN_ENTID": idmap,
+		"STEPHEN_KING_TEST_LIVE":      "FALSE",
+		"STEPHEN_KING_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["STEPHENKING_TEST_VILLAIN_ENTID"])
+	idmapResolved := core.ToMapAny(env["STEPHEN_KING_TEST_VILLAIN_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["STEPHENKING_TEST_LIVE"] == "TRUE" {
+	if env["STEPHEN_KING_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -199,13 +199,13 @@ func villainBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewStephenKingSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["STEPHENKING_TEST_LIVE"] == "TRUE"
+	live := env["STEPHEN_KING_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["STEPHENKING_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["STEPHEN_KING_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

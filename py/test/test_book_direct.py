@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from stephenking_sdk.utility.voxgig_struct import voxgig_struct as vs
 from stephenking_sdk import StephenKingSDK
-from core import helpers
+from stephenking_sdk.core import helpers
 from test import runner
 
 
@@ -102,11 +102,11 @@ def _book_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "STEPHENKING_TEST_BOOK_ENTID": {},
-        "STEPHENKING_TEST_LIVE": "FALSE",
+        "STEPHEN_KING_TEST_BOOK_ENTID": {},
+        "STEPHEN_KING_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("STEPHENKING_TEST_LIVE") == "TRUE"
+    live = env.get("STEPHEN_KING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

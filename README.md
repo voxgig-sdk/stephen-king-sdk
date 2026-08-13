@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = StephenKingSDK.test()
-const books = await client.Book().list()
-// books is an array of bare Book records populated with mock data
-console.log(books)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = StephenKingSDK.test({
+  entity: {
+    short: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const shorts = await client.Short().list()
+// shorts is an array of Short entities, populated with mock data
+// — call shorts[0].data() for the record itself
+console.log(shorts)
 ```
 
 ### Python
 
 ```python
 client = StephenKingSDK.test()
-books = client.Book().list()
-print(books)
+shorts = client.Short().list()
+print(shorts)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(books)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = StephenKingSDK::test([
-    "entity" => ["book" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["short" => ["test01" => ["id" => "test01"]]],
 ]);
-$books = $client->Book()->list();
+$shorts = $client->Short()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Book(nil).List(
+result, err := client.Short(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Book(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = StephenKingSDK.test({
-  "entity" => { "book" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "short" => { "test01" => { "id" => "test01" } } },
 })
-books = client.Book.list()
+shorts = client.Short.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Book():list()
+local results, err = client:Short():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { StephenKingSDK } from '@voxgig-sdk/stephen-king'
 
 const client = new StephenKingSDK()
 
-// List all books (returns Book[])
+// List all books (returns BookEntity[] — .data() for the record)
 const books = await client.Book().list()
 for (const book of books) {
   console.log(book)
@@ -193,7 +202,7 @@ $client = new StephenKingSDK();
 $books = $client->Book()->list();
 print_r($books);
 
-// Load a specific book (returns the bare record; throws on error)
+// Load a specific book (returns the ENTITY; call data_get() for the record; throws on error)
 $book = $client->Book()->load(["id" => 1]);
 print_r($book);
 ```
@@ -224,7 +233,7 @@ client = StephenKingSDK.new
 books = client.Book.list
 puts books
 
-# Load a specific book (returns the bare record; raises on error)
+# Load a specific book (returns the ENTITY; call data_get for the record)
 book = client.Book.load({ "id" => 1 })
 puts book
 ```
@@ -361,6 +370,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://stephen-king-api.onrender.com](https://stephen-king-api.onrender.com)
 

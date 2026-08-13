@@ -8,7 +8,7 @@
 export interface Book {
   id?: number
   isbn?: string
-  page?: number
+  pages?: number
   publisher?: string
   title?: string
   year?: number
@@ -21,7 +21,7 @@ export interface BookLoadMatch {
 export interface BookListMatch {
   id?: number
   isbn?: string
-  page?: number
+  pages?: number
   publisher?: string
   title?: string
   year?: number
@@ -51,7 +51,7 @@ export interface Villain {
   gender?: string
   id?: number
   name?: string
-  note?: string
+  notes?: string
   status?: string
   work?: string
 }
@@ -64,7 +64,7 @@ export interface VillainListMatch {
   gender?: string
   id?: number
   name?: string
-  note?: string
+  notes?: string
   status?: string
   work?: string
 }

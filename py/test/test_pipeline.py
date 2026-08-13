@@ -16,11 +16,11 @@
 import pytest
 
 from stephenking_sdk import StephenKingSDK
-from core.error import StephenKingError
-from core.result import StephenKingResult
-from core.response import StephenKingResponse
-from core.spec import StephenKingSpec
-from feature.base_feature import StephenKingBaseFeature
+from stephenking_sdk.core.error import StephenKingError
+from stephenking_sdk.core.result import StephenKingResult
+from stephenking_sdk.core.response import StephenKingResponse
+from stephenking_sdk.core.spec import StephenKingSpec
+from stephenking_sdk.feature.base_feature import StephenKingBaseFeature
 
 
 def _client():

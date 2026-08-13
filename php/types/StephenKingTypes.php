@@ -17,7 +17,7 @@ class Book
 {
     public ?int $id = null;
     public ?string $isbn = null;
-    public ?int $page = null;
+    public ?int $pages = null;
     public ?string $publisher = null;
     public ?string $title = null;
     public ?int $year = null;
@@ -34,7 +34,7 @@ class BookListMatch
 {
     public ?int $id = null;
     public ?string $isbn = null;
-    public ?int $page = null;
+    public ?int $pages = null;
     public ?string $publisher = null;
     public ?string $title = null;
     public ?int $year = null;
@@ -72,7 +72,7 @@ class Villain
     public ?string $gender = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?string $note = null;
+    public ?string $notes = null;
     public ?string $status = null;
     public ?string $work = null;
 }
@@ -89,7 +89,7 @@ class VillainListMatch
     public ?string $gender = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?string $note = null;
+    public ?string $notes = null;
     public ?string $status = null;
     public ?string $work = null;
 }

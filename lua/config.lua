@@ -42,7 +42,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "page",
+            ["name"] = "pages",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -78,6 +78,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/books",
                 ["parts"] = {
@@ -114,6 +115,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/book/{id}",
                 ["parts"] = {
@@ -187,6 +189,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/shorts",
                 ["parts"] = {
@@ -223,6 +226,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/short/{id}",
                 ["parts"] = {
@@ -274,7 +278,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "note",
+            ["name"] = "notes",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -303,6 +307,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/villains",
                 ["parts"] = {
@@ -339,6 +344,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/villain/{id}",
                 ["parts"] = {

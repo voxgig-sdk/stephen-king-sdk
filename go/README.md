@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-books, err := client.Book(nil).List(nil, nil)
+shorts, err := client.Short(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = books
+_ = shorts
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-book, err := client.Book(nil).List(
+short, err := client.Short(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(book) // the returned mock data
+fmt.Println(short) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -273,7 +273,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"id"` |  |
 | `"isbn"` |  |
-| `"page"` |  |
+| `"pages"` |  |
 | `"publisher"` |  |
 | `"title"` |  |
 | `"year"` |  |
@@ -303,7 +303,7 @@ API path: `/api/shorts`
 | `"gender"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"note"` |  |
+| `"notes"` |  |
 | `"status"` |  |
 | `"work"` |  |
 
@@ -333,7 +333,7 @@ Create an instance: `book := client.Book(nil)`
 | --- | --- | --- |
 | `id` | `int` |  |
 | `isbn` | `string` |  |
-| `page` | `int` |  |
+| `pages` | `int` |  |
 | `publisher` | `string` |  |
 | `title` | `string` |  |
 | `year` | `int` |  |
@@ -419,7 +419,7 @@ Create an instance: `villain := client.Villain(nil)`
 | `gender` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 | `status` | `string` |  |
 | `work` | `string` |  |
 
@@ -517,11 +517,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-book := client.Book(nil)
-book.List(nil, nil)
+short := client.Short(nil)
+short.List(nil, nil)
 
-// book.Data() now returns the book data from the last list
-// book.Match() returns the last match criteria
+// short.Data() now returns the short data from the last list
+// short.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

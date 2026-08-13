@@ -9,7 +9,7 @@
 ---@class Book
 ---@field id? number
 ---@field isbn? string
----@field page? number
+---@field pages? number
 ---@field publisher? string
 ---@field title? string
 ---@field year? number
@@ -20,7 +20,7 @@
 ---@class BookListMatch
 ---@field id? number
 ---@field isbn? string
----@field page? number
+---@field pages? number
 ---@field publisher? string
 ---@field title? string
 ---@field year? number
@@ -46,7 +46,7 @@
 ---@field gender? string
 ---@field id? number
 ---@field name? string
----@field note? string
+---@field notes? string
 ---@field status? string
 ---@field work? string
 
@@ -57,7 +57,7 @@
 ---@field gender? string
 ---@field id? number
 ---@field name? string
----@field note? string
+---@field notes? string
 ---@field status? string
 ---@field work? string
 

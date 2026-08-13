@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import StephenKingControl
-from core.error import StephenKingError
-from core.result import StephenKingResult
-from core.spec import StephenKingSpec
+from stephenking_sdk.config import make_config
+from stephenking_sdk.features import _make_feature
+from stephenking_sdk.core.control import StephenKingControl
+from stephenking_sdk.core.error import StephenKingError
+from stephenking_sdk.core.result import StephenKingResult
+from stephenking_sdk.core.spec import StephenKingSpec
 
 
 # True when this SDK was generated with the named feature.

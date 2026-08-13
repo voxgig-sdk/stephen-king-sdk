@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Book record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Book record (throws on error).
     $book = $client->Book()->load(["id" => 1]);
     print_r($book);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $books = $client->Book()->list();
+    $shorts = $client->Short()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = StephenKingSDK::test([
-    "entity" => ["book" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["short" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$book = $client->Book()->list();
-print_r($book);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$short = $client->Short()->list();
+print_r($short);
 ```
 
 ### Use a custom fetch function
@@ -242,7 +243,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -266,7 +267,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `id` |  |
 | `isbn` |  |
-| `page` |  |
+| `pages` |  |
 | `publisher` |  |
 | `title` |  |
 | `year` |  |
@@ -296,7 +297,7 @@ API path: `/api/shorts`
 | `gender` |  |
 | `id` |  |
 | `name` |  |
-| `note` |  |
+| `notes` |  |
 | `status` |  |
 | `work` |  |
 
@@ -326,7 +327,7 @@ Create an instance: `$book = $client->Book();`
 | --- | --- | --- |
 | `id` | `int` |  |
 | `isbn` | `string` |  |
-| `page` | `int` |  |
+| `pages` | `int` |  |
 | `publisher` | `string` |  |
 | `title` | `string` |  |
 | `year` | `int` |  |
@@ -334,7 +335,7 @@ Create an instance: `$book = $client->Book();`
 #### Example: Load
 
 ```php
-// load() returns the bare Book record (throws on error).
+// load() returns the ENTITY — call data_get() for the Book record (throws on error).
 $book = $client->Book()->load(["id" => 1]);
 ```
 
@@ -370,7 +371,7 @@ Create an instance: `$short = $client->Short();`
 #### Example: Load
 
 ```php
-// load() returns the bare Short record (throws on error).
+// load() returns the ENTITY — call data_get() for the Short record (throws on error).
 $short = $client->Short()->load(["id" => 1]);
 ```
 
@@ -400,14 +401,14 @@ Create an instance: `$villain = $client->Villain();`
 | `gender` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 | `status` | `string` |  |
 | `work` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Villain record (throws on error).
+// load() returns the ENTITY — call data_get() for the Villain record (throws on error).
 $villain = $client->Villain()->load(["id" => 1]);
 ```
 
@@ -495,11 +496,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$book = $client->Book();
-$book->list();
+$short = $client->Short();
+$short->list();
 
-// $book->data_get() now returns the book data from the last list
-// $book->match_get() returns the last match criteria
+// $short->data_get() now returns the short data from the last list
+// $short->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

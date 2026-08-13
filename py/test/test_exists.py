@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# StephenKing SDK exists test
 
 import pytest
 from stephenking_sdk import StephenKingSDK

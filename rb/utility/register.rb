@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ StephenKingUtility.registrar = ->(u) {
   u.prepare_params = StephenKingUtilities::PrepareParams
   u.prepare_path = StephenKingUtilities::PreparePath
   u.prepare_query = StephenKingUtilities::PrepareQuery
+  u.graphql_body = StephenKingUtilities::GraphqlBody
+  u.graphql_errors = StephenKingUtilities::GraphqlErrors
   u.result_basic = StephenKingUtilities::ResultBasic
   u.result_body = StephenKingUtilities::ResultBody
   u.result_headers = StephenKingUtilities::ResultHeaders

@@ -97,7 +97,7 @@ book = client.Book()
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
 | `isbn` | `str` | No |  |
-| `page` | `int` | No |  |
+| `pages` | `int` | No |  |
 | `publisher` | `str` | No |  |
 | `title` | `str` | No |  |
 | `year` | `int` | No |  |
@@ -229,7 +229,7 @@ villain = client.Villain()
 | `gender` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `note` | `str` | No |  |
+| `notes` | `str` | No |  |
 | `status` | `str` | No |  |
 | `work` | `str` | No |  |
 

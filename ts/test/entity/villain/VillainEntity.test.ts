@@ -26,8 +26,8 @@ import {
 describe('VillainEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STEPHENKING_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STEPHENKING_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STEPHEN_KING_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STEPHEN_KING_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StephenKingSDK.test()
@@ -63,13 +63,13 @@ describe('VillainEntity', async () => {
     const villain_ref01_ent = client.Villain()
     const villain_ref01_match: any = {}
 
-    const villain_ref01_list = await villain_ref01_ent.list(villain_ref01_match)
+    const villain_ref01_list = (await villain_ref01_ent.list(villain_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const villain_ref01_match_dt0: any = {}
     villain_ref01_match_dt0.id = villain_ref01_data.id
-    const villain_ref01_data_dt0 = await villain_ref01_ent.load(villain_ref01_match_dt0)
+    const villain_ref01_data_dt0 = (await villain_ref01_ent.load(villain_ref01_match_dt0)).data()
     assert(villain_ref01_data_dt0.id === villain_ref01_data.id)
 
 

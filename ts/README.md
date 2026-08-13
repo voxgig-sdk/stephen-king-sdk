@@ -35,7 +35,9 @@ const client = new StephenKingSDK()
 
 ### 2. List book records
 
-`list()` resolves to an array of Book objects — iterate it directly:
+`list()` resolves to an array of Book ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const books = await client.Book().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const books = await client.Book().list()
-  console.log(books)
+  const shorts = await client.Short().list()
+  console.log(shorts)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StephenKingSDK.test()
 
-const book = await client.Book().list()
-// book is a bare entity populated with mock response data
-console.log(book)
+const short = await client.Short().list()
+// short is the entity, populated with mock response data
+// — call short.data() for the record itself
+console.log(short)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Book()
+const entity = client.Short()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -303,7 +306,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `id` |  |
 | `isbn` |  |
-| `page` |  |
+| `pages` |  |
 | `publisher` |  |
 | `title` |  |
 | `year` |  |
@@ -333,7 +336,7 @@ API path: `/api/shorts`
 | `gender` |  |
 | `id` |  |
 | `name` |  |
-| `note` |  |
+| `notes` |  |
 | `status` |  |
 | `work` |  |
 
@@ -363,7 +366,7 @@ Create an instance: `const book = client.Book()`
 | --- | --- | --- |
 | `id` | `number` |  |
 | `isbn` | `string` |  |
-| `page` | `number` |  |
+| `pages` | `number` |  |
 | `publisher` | `string` |  |
 | `title` | `string` |  |
 | `year` | `number` |  |
@@ -433,7 +436,7 @@ Create an instance: `const villain = client.Villain()`
 | `gender` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 | `status` | `string` |  |
 | `work` | `string` |  |
 
@@ -519,11 +522,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const book = client.Book()
-await book.list()
+const short = client.Short()
+await short.list()
 
-// book.data() now returns the book data from the last `list`
-// book.match() returns the last match criteria
+// short.data() now returns the short data from the last `list`
+// short.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

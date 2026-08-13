@@ -119,11 +119,11 @@ function short_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "STEPHENKING_TEST_SHORT_ENTID" => [],
-        "STEPHENKING_TEST_LIVE" => "FALSE",
+        "STEPHEN_KING_TEST_SHORT_ENTID" => [],
+        "STEPHEN_KING_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["STEPHENKING_TEST_LIVE"] === "TRUE";
+    $live = $env["STEPHEN_KING_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

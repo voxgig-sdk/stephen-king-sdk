@@ -5,7 +5,7 @@
         "gender": "s3c",
         "id": "VILLAIN00",
         "name": "s3e",
-        "note": "s3f",
+        "notes": "s3f",
         "status": "s40",
         "work": "s41"
       },
@@ -13,7 +13,7 @@
         "gender": "s78",
         "id": "VILLAIN01",
         "name": "s7a",
-        "note": "s7b",
+        "notes": "s7b",
         "status": "s7c",
         "work": "s7d"
       },
@@ -21,7 +21,7 @@
         "gender": "sb4",
         "id": "VILLAIN02",
         "name": "sb6",
-        "note": "sb7",
+        "notes": "sb7",
         "status": "sb8",
         "work": "sb9"
       }
@@ -32,7 +32,7 @@
       "villain_ref01": {
         "gender": "sf0",
         "name": "sf2",
-        "note": "sf3",
+        "notes": "sf3",
         "status": "sf4",
         "work": "sf5"
       }

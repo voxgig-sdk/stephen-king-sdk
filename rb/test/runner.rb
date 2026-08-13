@@ -23,8 +23,8 @@ module StephenKingTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("STEPHENKING_TEST_LIVE")
-    override = getenv("STEPHENKING_TEST_OVERRIDE")
+    live = getenv("STEPHEN_KING_TEST_LIVE")
+    override = getenv("STEPHEN_KING_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module StephenKingTestRunner
       end
     end
 
-    explain = getenv("STEPHENKING_TEST_EXPLAIN")
-    m["STEPHENKING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("STEPHEN_KING_TEST_EXPLAIN")
+    m["STEPHEN_KING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end
