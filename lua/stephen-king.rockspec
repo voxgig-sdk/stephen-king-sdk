@@ -23,6 +23,7 @@ build = {
   modules = {
     ["stephen-king_sdk"] = "stephen-king_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

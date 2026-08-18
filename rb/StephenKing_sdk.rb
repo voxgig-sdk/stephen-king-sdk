@@ -28,7 +28,7 @@ class StephenKingSDK
     utility = StephenKingUtility.new
     @_utility = utility
 
-    config = StephenKingConfig.make_config
+    config = StephenKingConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

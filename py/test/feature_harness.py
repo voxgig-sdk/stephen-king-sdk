@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from stephenking_sdk.config import make_config
+from stephenking_sdk.config import shared_config
 from stephenking_sdk.features import _make_feature
 from stephenking_sdk.core.control import StephenKingControl
 from stephenking_sdk.core.error import StephenKingError
@@ -24,7 +24,7 @@ from stephenking_sdk.core.spec import StephenKingSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

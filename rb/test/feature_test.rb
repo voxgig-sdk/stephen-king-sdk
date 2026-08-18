@@ -15,7 +15,7 @@ require_relative "../StephenKing_sdk"
 module StephenKingFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = StephenKingConfig.make_config["feature"]
+    f = StephenKingConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

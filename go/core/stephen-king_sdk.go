@@ -23,7 +23,7 @@ func NewStephenKingSDK(options map[string]any) *StephenKingSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,

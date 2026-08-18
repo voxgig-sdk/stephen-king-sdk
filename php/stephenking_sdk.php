@@ -40,7 +40,7 @@ class StephenKingSDK
         $utility = new StephenKingUtility();
         $this->_utility = $utility;
 
-        $config = StephenKingConfig::make_config();
+        $config = StephenKingConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
