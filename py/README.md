@@ -258,12 +258,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `isbn` |  |
-| `pages` |  |
-| `publisher` |  |
-| `title` |  |
-| `year` |  |
+| `id` | Unique identifier for the book |
+| `isbn` | ISBN of the book |
+| `pages` | Number of pages |
+| `publisher` | Publisher of the book |
+| `title` | Title of the book |
+| `year` | Year of publication |
 
 Operations: List, Load.
 
@@ -273,11 +273,11 @@ API path: `/api/books`
 
 | Field | Description |
 | --- | --- |
-| `collection` |  |
-| `id` |  |
-| `title` |  |
-| `type` |  |
-| `year` |  |
+| `collection` | Collection the short story appears in |
+| `id` | Unique identifier for the short story |
+| `title` | Title of the short story |
+| `type` | Type of short story |
+| `year` | Year of publication |
 
 Operations: List, Load.
 
@@ -287,12 +287,12 @@ API path: `/api/shorts`
 
 | Field | Description |
 | --- | --- |
-| `gender` |  |
-| `id` |  |
-| `name` |  |
-| `notes` |  |
-| `status` |  |
-| `work` |  |
+| `gender` | Gender of the villain |
+| `id` | Unique identifier for the villain |
+| `name` | Name of the villain |
+| `notes` | Additional notes about the villain |
+| `status` | Current status of the villain |
+| `work` | Book or story the villain appears in |
 
 Operations: List, Load.
 
@@ -318,12 +318,12 @@ Create an instance: `book = client.Book()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `isbn` | `str` |  |
-| `pages` | `int` |  |
-| `publisher` | `str` |  |
-| `title` | `str` |  |
-| `year` | `int` |  |
+| `id` | `int` | Unique identifier for the book |
+| `isbn` | `str` | ISBN of the book |
+| `pages` | `int` | Number of pages |
+| `publisher` | `str` | Publisher of the book |
+| `title` | `str` | Title of the book |
+| `year` | `int` | Year of publication |
 
 #### Example: Load
 
@@ -353,11 +353,11 @@ Create an instance: `short = client.Short()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `collection` | `str` |  |
-| `id` | `int` |  |
-| `title` | `str` |  |
-| `type` | `str` |  |
-| `year` | `int` |  |
+| `collection` | `str` | Collection the short story appears in |
+| `id` | `int` | Unique identifier for the short story |
+| `title` | `str` | Title of the short story |
+| `type` | `str` | Type of short story |
+| `year` | `int` | Year of publication |
 
 #### Example: Load
 
@@ -387,12 +387,12 @@ Create an instance: `villain = client.Villain()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gender` | `str` |  |
-| `id` | `int` |  |
-| `name` | `str` |  |
-| `notes` | `str` |  |
-| `status` | `str` |  |
-| `work` | `str` |  |
+| `gender` | `str` | Gender of the villain |
+| `id` | `int` | Unique identifier for the villain |
+| `name` | `str` | Name of the villain |
+| `notes` | `str` | Additional notes about the villain |
+| `status` | `str` | Current status of the villain |
+| `work` | `str` | Book or story the villain appears in |
 
 #### Example: Load
 

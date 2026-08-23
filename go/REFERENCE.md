@@ -106,12 +106,12 @@ fmt.Println(book.GetName()) // "book"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `isbn` | `string` | No |  |
-| `pages` | `int` | No |  |
-| `publisher` | `string` | No |  |
-| `title` | `string` | No |  |
-| `year` | `int` | No |  |
+| `id` | `int` | No | Unique identifier for the book |
+| `isbn` | `string` | No | ISBN of the book |
+| `pages` | `int` | No | Number of pages |
+| `publisher` | `string` | No | Publisher of the book |
+| `title` | `string` | No | Title of the book |
+| `year` | `int` | No | Year of publication |
 
 ### Operations
 
@@ -174,11 +174,11 @@ fmt.Println(short.GetName()) // "short"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | `string` | No |  |
-| `id` | `int` | No |  |
-| `title` | `string` | No |  |
-| `type` | `string` | No |  |
-| `year` | `int` | No |  |
+| `collection` | `string` | No | Collection the short story appears in |
+| `id` | `int` | No | Unique identifier for the short story |
+| `title` | `string` | No | Title of the short story |
+| `type` | `string` | No | Type of short story |
+| `year` | `int` | No | Year of publication |
 
 ### Operations
 
@@ -241,12 +241,12 @@ fmt.Println(villain.GetName()) // "villain"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `notes` | `string` | No |  |
-| `status` | `string` | No |  |
-| `work` | `string` | No |  |
+| `gender` | `string` | No | Gender of the villain |
+| `id` | `int` | No | Unique identifier for the villain |
+| `name` | `string` | No | Name of the villain |
+| `notes` | `string` | No | Additional notes about the villain |
+| `status` | `string` | No | Current status of the villain |
+| `work` | `string` | No | Book or story the villain appears in |
 
 ### Operations
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "StephenKing",
+			"slug": "stephen-king",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,26 +38,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the book",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "isbn",
+						"short": "ISBN of the book",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pages",
+						"short": "Number of pages",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "publisher",
+						"short": "Publisher of the book",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the book",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Year of publication",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -127,22 +136,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "collection",
+						"short": "Collection the short story appears in",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the short story",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the short story",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of short story",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Year of publication",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -215,26 +229,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gender",
+						"short": "Gender of the villain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the villain",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the villain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "notes",
+						"short": "Additional notes about the villain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"short": "Current status of the villain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "work",
+						"short": "Book or story the villain appears in",
 						"type": "`$STRING`",
 					},
 				},

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "StephenKing",
+      slug = "stephen-king",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,26 +34,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the book",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "isbn",
+            ["short"] = "ISBN of the book",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "pages",
+            ["short"] = "Number of pages",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "publisher",
+            ["short"] = "Publisher of the book",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "title",
+            ["short"] = "Title of the book",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "year",
+            ["short"] = "Year of publication",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -123,22 +132,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "collection",
+            ["short"] = "Collection the short story appears in",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the short story",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "title",
+            ["short"] = "Title of the short story",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "type",
+            ["short"] = "Type of short story",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "year",
+            ["short"] = "Year of publication",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -211,26 +225,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "gender",
+            ["short"] = "Gender of the villain",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the villain",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the villain",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "notes",
+            ["short"] = "Additional notes about the villain",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["short"] = "Current status of the villain",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "work",
+            ["short"] = "Book or story the villain appears in",
             ["type"] = "`$STRING`",
           },
         },

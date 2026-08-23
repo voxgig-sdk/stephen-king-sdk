@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -304,12 +304,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `isbn` |  |
-| `pages` |  |
-| `publisher` |  |
-| `title` |  |
-| `year` |  |
+| `id` | Unique identifier for the book |
+| `isbn` | ISBN of the book |
+| `pages` | Number of pages |
+| `publisher` | Publisher of the book |
+| `title` | Title of the book |
+| `year` | Year of publication |
 
 Operations: list, load.
 
@@ -319,11 +319,11 @@ API path: `/api/books`
 
 | Field | Description |
 | --- | --- |
-| `collection` |  |
-| `id` |  |
-| `title` |  |
-| `type` |  |
-| `year` |  |
+| `collection` | Collection the short story appears in |
+| `id` | Unique identifier for the short story |
+| `title` | Title of the short story |
+| `type` | Type of short story |
+| `year` | Year of publication |
 
 Operations: list, load.
 
@@ -333,12 +333,12 @@ API path: `/api/shorts`
 
 | Field | Description |
 | --- | --- |
-| `gender` |  |
-| `id` |  |
-| `name` |  |
-| `notes` |  |
-| `status` |  |
-| `work` |  |
+| `gender` | Gender of the villain |
+| `id` | Unique identifier for the villain |
+| `name` | Name of the villain |
+| `notes` | Additional notes about the villain |
+| `status` | Current status of the villain |
+| `work` | Book or story the villain appears in |
 
 Operations: list, load.
 
@@ -364,12 +364,12 @@ Create an instance: `const book = client.Book()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `isbn` | `string` |  |
-| `pages` | `number` |  |
-| `publisher` | `string` |  |
-| `title` | `string` |  |
-| `year` | `number` |  |
+| `id` | `number` | Unique identifier for the book |
+| `isbn` | `string` | ISBN of the book |
+| `pages` | `number` | Number of pages |
+| `publisher` | `string` | Publisher of the book |
+| `title` | `string` | Title of the book |
+| `year` | `number` | Year of publication |
 
 #### Example: Load
 
@@ -399,11 +399,11 @@ Create an instance: `const short = client.Short()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `collection` | `string` |  |
-| `id` | `number` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
-| `year` | `number` |  |
+| `collection` | `string` | Collection the short story appears in |
+| `id` | `number` | Unique identifier for the short story |
+| `title` | `string` | Title of the short story |
+| `type` | `string` | Type of short story |
+| `year` | `number` | Year of publication |
 
 #### Example: Load
 
@@ -433,12 +433,12 @@ Create an instance: `const villain = client.Villain()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gender` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `notes` | `string` |  |
-| `status` | `string` |  |
-| `work` | `string` |  |
+| `gender` | `string` | Gender of the villain |
+| `id` | `number` | Unique identifier for the villain |
+| `name` | `string` | Name of the villain |
+| `notes` | `string` | Additional notes about the villain |
+| `status` | `string` | Current status of the villain |
+| `work` | `string` | Book or story the villain appears in |
 
 #### Example: Load
 

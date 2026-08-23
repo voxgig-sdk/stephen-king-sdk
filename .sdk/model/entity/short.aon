@@ -1,39 +1,39 @@
-# Entity: villain
+# Entity: short
 
-main: kit: entity: villain: {
+main: kit: entity: short: {
 
   alias: field: {}
 
   fields: [
     {
-      name: "gender"
+      name: "collection"
       req: false
+      short: "Collection the short story appears in"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the short story"
       type: "`$INTEGER`"
     }
     {
-      name: "name"
+      name: "title"
       req: false
+      short: "Title of the short story"
       type: "`$STRING`"
     }
     {
-      name: "notes"
+      name: "type"
       req: false
+      short: "Type of short story"
       type: "`$STRING`"
     }
     {
-      name: "status"
+      name: "year"
       req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "work"
-      req: false
-      type: "`$STRING`"
+      short: "Year of publication"
+      type: "`$INTEGER`"
     }
   ]
 
@@ -42,17 +42,17 @@ main: kit: entity: villain: {
     name: "id"
   }
 
-  name: "villain"
+  name: "short"
   op: {
     list: {
       name: "list"
       points: [
         {
           method: "GET"
-          orig: "/api/villains"
+          orig: "/api/shorts"
           parts: [
             "api"
-            "villains"
+            "shorts"
           ]
           transform: {
             req: "`reqdata`"
@@ -78,10 +78,10 @@ main: kit: entity: villain: {
             ]
           }
           method: "GET"
-          orig: "/api/villain/{id}"
+          orig: "/api/short/{id}"
           parts: [
             "api"
-            "villain"
+            "short"
             "{id}"
           ]
           select: {

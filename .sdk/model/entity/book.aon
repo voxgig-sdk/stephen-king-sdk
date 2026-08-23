@@ -8,31 +8,37 @@ main: kit: entity: book: {
     {
       name: "id"
       req: false
+      short: "Unique identifier for the book"
       type: "`$INTEGER`"
     }
     {
       name: "isbn"
       req: false
+      short: "ISBN of the book"
       type: "`$STRING`"
     }
     {
       name: "pages"
       req: false
+      short: "Number of pages"
       type: "`$INTEGER`"
     }
     {
       name: "publisher"
       req: false
+      short: "Publisher of the book"
       type: "`$STRING`"
     }
     {
       name: "title"
       req: false
+      short: "Title of the book"
       type: "`$STRING`"
     }
     {
       name: "year"
       req: false
+      short: "Year of publication"
       type: "`$INTEGER`"
     }
   ]

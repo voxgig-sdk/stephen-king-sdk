@@ -36,36 +36,42 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the book",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "isbn",
               "req": false,
+              "short": "ISBN of the book",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pages",
               "req": false,
+              "short": "Number of pages",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "publisher",
               "req": false,
+              "short": "Publisher of the book",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the book",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "Year of publication",
               "type": "`$INTEGER`"
             }
           ],
@@ -151,30 +157,35 @@
               "active": true,
               "name": "collection",
               "req": false,
+              "short": "Collection the short story appears in",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the short story",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the short story",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of short story",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "Year of publication",
               "type": "`$INTEGER`"
             }
           ],
@@ -260,36 +271,42 @@
               "active": true,
               "name": "gender",
               "req": false,
+              "short": "Gender of the villain",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the villain",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the villain",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "notes",
               "req": false,
+              "short": "Additional notes about the villain",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Current status of the villain",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "work",
               "req": false,
+              "short": "Book or story the villain appears in",
               "type": "`$STRING`"
             }
           ],

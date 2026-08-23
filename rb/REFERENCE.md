@@ -101,12 +101,12 @@ book = client.Book
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `isbn` | `String` | No |  |
-| `pages` | `Integer` | No |  |
-| `publisher` | `String` | No |  |
-| `title` | `String` | No |  |
-| `year` | `Integer` | No |  |
+| `id` | `Integer` | No | Unique identifier for the book |
+| `isbn` | `String` | No | ISBN of the book |
+| `pages` | `Integer` | No | Number of pages |
+| `publisher` | `String` | No | Publisher of the book |
+| `title` | `String` | No | Title of the book |
+| `year` | `Integer` | No | Year of publication |
 
 ### Operations
 
@@ -166,11 +166,11 @@ short = client.Short
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `collection` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `title` | `String` | No |  |
-| `type` | `String` | No |  |
-| `year` | `Integer` | No |  |
+| `collection` | `String` | No | Collection the short story appears in |
+| `id` | `Integer` | No | Unique identifier for the short story |
+| `title` | `String` | No | Title of the short story |
+| `type` | `String` | No | Type of short story |
+| `year` | `Integer` | No | Year of publication |
 
 ### Operations
 
@@ -230,12 +230,12 @@ villain = client.Villain
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gender` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `notes` | `String` | No |  |
-| `status` | `String` | No |  |
-| `work` | `String` | No |  |
+| `gender` | `String` | No | Gender of the villain |
+| `id` | `Integer` | No | Unique identifier for the villain |
+| `name` | `String` | No | Name of the villain |
+| `notes` | `String` | No | Additional notes about the villain |
+| `status` | `String` | No | Current status of the villain |
+| `work` | `String` | No | Book or story the villain appears in |
 
 ### Operations
 

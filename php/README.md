@@ -265,12 +265,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `isbn` |  |
-| `pages` |  |
-| `publisher` |  |
-| `title` |  |
-| `year` |  |
+| `id` | Unique identifier for the book |
+| `isbn` | ISBN of the book |
+| `pages` | Number of pages |
+| `publisher` | Publisher of the book |
+| `title` | Title of the book |
+| `year` | Year of publication |
 
 Operations: List, Load.
 
@@ -280,11 +280,11 @@ API path: `/api/books`
 
 | Field | Description |
 | --- | --- |
-| `collection` |  |
-| `id` |  |
-| `title` |  |
-| `type` |  |
-| `year` |  |
+| `collection` | Collection the short story appears in |
+| `id` | Unique identifier for the short story |
+| `title` | Title of the short story |
+| `type` | Type of short story |
+| `year` | Year of publication |
 
 Operations: List, Load.
 
@@ -294,12 +294,12 @@ API path: `/api/shorts`
 
 | Field | Description |
 | --- | --- |
-| `gender` |  |
-| `id` |  |
-| `name` |  |
-| `notes` |  |
-| `status` |  |
-| `work` |  |
+| `gender` | Gender of the villain |
+| `id` | Unique identifier for the villain |
+| `name` | Name of the villain |
+| `notes` | Additional notes about the villain |
+| `status` | Current status of the villain |
+| `work` | Book or story the villain appears in |
 
 Operations: List, Load.
 
@@ -325,12 +325,12 @@ Create an instance: `$book = $client->Book();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `isbn` | `string` |  |
-| `pages` | `int` |  |
-| `publisher` | `string` |  |
-| `title` | `string` |  |
-| `year` | `int` |  |
+| `id` | `int` | Unique identifier for the book |
+| `isbn` | `string` | ISBN of the book |
+| `pages` | `int` | Number of pages |
+| `publisher` | `string` | Publisher of the book |
+| `title` | `string` | Title of the book |
+| `year` | `int` | Year of publication |
 
 #### Example: Load
 
@@ -362,11 +362,11 @@ Create an instance: `$short = $client->Short();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `collection` | `string` |  |
-| `id` | `int` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
-| `year` | `int` |  |
+| `collection` | `string` | Collection the short story appears in |
+| `id` | `int` | Unique identifier for the short story |
+| `title` | `string` | Title of the short story |
+| `type` | `string` | Type of short story |
+| `year` | `int` | Year of publication |
 
 #### Example: Load
 
@@ -398,12 +398,12 @@ Create an instance: `$villain = $client->Villain();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gender` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `notes` | `string` |  |
-| `status` | `string` |  |
-| `work` | `string` |  |
+| `gender` | `string` | Gender of the villain |
+| `id` | `int` | Unique identifier for the villain |
+| `name` | `string` | Name of the villain |
+| `notes` | `string` | Additional notes about the villain |
+| `status` | `string` | Current status of the villain |
+| `work` | `string` | Book or story the villain appears in |
 
 #### Example: Load
 
