@@ -42,6 +42,7 @@ class StephenKingConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

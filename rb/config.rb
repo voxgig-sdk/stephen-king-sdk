@@ -28,6 +28,7 @@ module StephenKingConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
