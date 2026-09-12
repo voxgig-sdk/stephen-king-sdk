@@ -1,6 +1,14 @@
 # StephenKing SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -85,6 +93,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "book",
         "op": {
           "list": {
@@ -96,15 +108,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/books",
-                "parts": [
-                  "api",
-                  "books",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "books",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "books",
+                ],
               },
             ],
           },
@@ -128,10 +148,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/book/{id}",
-                "parts": [
-                  "api",
-                  "book",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "book",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -142,6 +168,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "book",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -178,6 +209,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "short",
         "op": {
           "list": {
@@ -189,15 +224,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/shorts",
-                "parts": [
-                  "api",
-                  "shorts",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "shorts",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "shorts",
+                ],
               },
             ],
           },
@@ -221,10 +264,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/short/{id}",
-                "parts": [
-                  "api",
-                  "short",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "short",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -235,6 +284,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "short",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -276,6 +330,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "villain",
         "op": {
           "list": {
@@ -287,15 +345,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/villains",
-                "parts": [
-                  "api",
-                  "villains",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "villains",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "villains",
+                ],
               },
             ],
           },
@@ -319,10 +385,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/villain/{id}",
-                "parts": [
-                  "api",
-                  "villain",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "villain",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -333,6 +405,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "villain",
+                  "{id}",
+                ],
               },
             ],
           },

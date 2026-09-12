@@ -50,9 +50,13 @@ main: kit: entity: short: {
         {
           method: "GET"
           orig: "/api/shorts"
-          parts: [
-            "api"
-            "shorts"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "shorts"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -79,10 +83,16 @@ main: kit: entity: short: {
           }
           method: "GET"
           orig: "/api/short/{id}"
-          parts: [
-            "api"
-            "short"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "short"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

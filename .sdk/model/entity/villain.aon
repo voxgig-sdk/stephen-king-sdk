@@ -56,9 +56,13 @@ main: kit: entity: villain: {
         {
           method: "GET"
           orig: "/api/villains"
-          parts: [
-            "api"
-            "villains"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "villains"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -85,10 +89,16 @@ main: kit: entity: villain: {
           }
           method: "GET"
           orig: "/api/villain/{id}"
-          parts: [
-            "api"
-            "villain"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "villain"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

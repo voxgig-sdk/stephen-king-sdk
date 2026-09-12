@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -103,6 +114,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "book",
       "op": {
         "list": {
@@ -114,15 +129,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/books",
-              "parts": [
-                "api",
-                "books"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "books"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "books"
+              ]
             }
           ]
         },
@@ -146,10 +169,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/book/{id}",
-              "parts": [
-                "api",
-                "book",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "book"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -159,7 +188,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "book",
+                "{id}"
+              ]
             }
           ]
         }
@@ -196,6 +230,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "short",
       "op": {
         "list": {
@@ -207,15 +245,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/shorts",
-              "parts": [
-                "api",
-                "shorts"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "shorts"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "shorts"
+              ]
             }
           ]
         },
@@ -239,10 +285,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/short/{id}",
-              "parts": [
-                "api",
-                "short",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "short"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -252,7 +304,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "short",
+                "{id}"
+              ]
             }
           ]
         }
@@ -294,6 +351,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "villain",
       "op": {
         "list": {
@@ -305,15 +366,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/villains",
-              "parts": [
-                "api",
-                "villains"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "villains"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "villains"
+              ]
             }
           ]
         },
@@ -337,10 +406,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/villain/{id}",
-              "parts": [
-                "api",
-                "villain",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "villain"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -350,7 +425,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "villain",
+                "{id}"
+              ]
             }
           ]
         }
@@ -366,6 +446,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

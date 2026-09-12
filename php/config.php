@@ -90,6 +90,10 @@ class StephenKingConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'book',
           'op' => [
             'list' => [
@@ -101,14 +105,22 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/books',
-                  'parts' => [
-                    'api',
-                    'books',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'books',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'books',
                   ],
                 ],
               ],
@@ -133,10 +145,16 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/book/{id}',
-                  'parts' => [
-                    'api',
-                    'book',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'book',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -146,6 +164,11 @@ class StephenKingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'book',
+                    '{id}',
                   ],
                 ],
               ],
@@ -183,6 +206,10 @@ class StephenKingConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'short',
           'op' => [
             'list' => [
@@ -194,14 +221,22 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/shorts',
-                  'parts' => [
-                    'api',
-                    'shorts',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'shorts',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'shorts',
                   ],
                 ],
               ],
@@ -226,10 +261,16 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/short/{id}',
-                  'parts' => [
-                    'api',
-                    'short',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'short',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -239,6 +280,11 @@ class StephenKingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'short',
+                    '{id}',
                   ],
                 ],
               ],
@@ -281,6 +327,10 @@ class StephenKingConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'villain',
           'op' => [
             'list' => [
@@ -292,14 +342,22 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/villains',
-                  'parts' => [
-                    'api',
-                    'villains',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'villains',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'villains',
                   ],
                 ],
               ],
@@ -324,10 +382,16 @@ class StephenKingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/villain/{id}',
-                  'parts' => [
-                    'api',
-                    'villain',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'villain',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -337,6 +401,11 @@ class StephenKingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'villain',
+                    '{id}',
                   ],
                 ],
               ],
