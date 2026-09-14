@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StephenKingSDK } from '@voxgig-sdk/stephen-king'
+import { StephenKingSDK } from '@voxgig-sdk/stephen-king-sdk'
 
 const client = new StephenKingSDK()
 ```
@@ -535,7 +535,7 @@ stephen-king/
 Import the SDK from the package root:
 
 ```ts
-import { StephenKingSDK } from '@voxgig-sdk/stephen-king'
+import { StephenKingSDK } from '@voxgig-sdk/stephen-king-sdk'
 ```
 
 ### Entity state

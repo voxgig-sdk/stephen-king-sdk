@@ -105,7 +105,7 @@ local results, err = client:Short():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/stephen-king` | publish pending — [install from git tag](https://github.com/voxgig-sdk/stephen-king-sdk/releases) |
+| TypeScript | `@voxgig-sdk/stephen-king-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/stephen-king-sdk/releases) |
 | Python | `voxgig-sdk-stephen-king` | publish pending — [install from git tag](https://github.com/voxgig-sdk/stephen-king-sdk/releases) |
 | PHP | `voxgig-sdk/stephen-king` | publish pending — [install from git tag](https://github.com/voxgig-sdk/stephen-king-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/stephen-king-sdk/go` | `go get github.com/voxgig-sdk/stephen-king-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Short():list()
 ### TypeScript
 
 ```ts
-import { StephenKingSDK } from '@voxgig-sdk/stephen-king'
+import { StephenKingSDK } from '@voxgig-sdk/stephen-king-sdk'
 
 const client = new StephenKingSDK()
 
